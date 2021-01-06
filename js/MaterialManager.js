@@ -17,7 +17,7 @@ function ChangeMaterialProperties() {
     Radar_X_Mats.push("XGroup")
     Radar_S_Mats.push("SGroup")
     
-    var redLeo = new BABYLON.Color3.FromHexString("#E1000F");
+    var redLeo = new BABYLON.Color3.FromHexString("#FF0000");
     var blueBay = new BABYLON.Color3.FromHexString("#063c9d");
     var lightGrayBay = new BABYLON.Color3.FromHexString("#eeeeee");
     var darkGrayBay = new BABYLON.Color3.FromHexString("#323334");
