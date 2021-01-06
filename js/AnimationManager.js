@@ -27,7 +27,7 @@ function travelCamToStation(i) {
     console.log(BABYLON.Tools.ToDegrees(Math.PI / 2 - angleAlpha))
     //alert(BABYLON.Tools.ToDegrees(Math.PI/2 - angleAlpha))
     //walkerCam.rotation.y = Math.PI/2 - angleAlpha
-    if (i == 4)
+    if (i == 5)
         CamTween.to(walkerCam.rotation, { x: 0, y: Math.PI * 2 + Math.PI / 2 - angleAlpha, ease: "power2.out", duration: 1.5 }, "<")
     else
         CamTween.to(walkerCam.rotation, { x: -0.05, y: Math.PI / 2 - angleAlpha, ease: "power2.out", duration: 1.5 }, "<")
