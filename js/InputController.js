@@ -8,15 +8,15 @@ document.addEventListener("keydown", event => {
 
 let band = "C" // init value
 let stationsUIBtn = ["to-overlay", "video-btn",
-                     "x-0", "x-1", "x-1-r", "x-2", "x-3", "x-4", "x-5", 
-                     "b-0", "b-1", "b-2","b-2-0", "b-2-1",  "b-3", "b-3-1", "b-3-2", "b-3-3", "b-3-4", "b-3-5", "b-3-6", "b-3-7", "b-4", "b-5",
-                     "soft-vid-btn-1", "soft-vid-btn-0", "lidar-vid-btn-0"]
+    "x-0", "x-1", "x-1-r", "x-2", "x-3", "x-4", "x-5",
+    "b-0", "b-1", "b-2", "b-2-0", "b-2-1", "b-3", "b-3-1", "b-3-2", "b-3-3", "b-3-4", "b-3-5", "b-3-6", "b-3-7", "b-4", "b-5",
+    "soft-vid-btn-1", "soft-vid-btn-0", "lidar-vid-btn-0"]
 
 let is_in_new_p = false
 //Mouse Listener
 document.addEventListener("pointerdown", event => {
     //avoid clicking while animiting
-    if(isAnimatingCam){
+    if (isAnimatingCam) {
         return
     }
 
@@ -30,6 +30,10 @@ document.addEventListener("pointerdown", event => {
         console.log(event.target.children[0].id)
         MenuUIListener(event)
     }
+    else if (event.target.classList.contains("station-names-text")) {
+        console.log(event.target.id)
+        StationNameCliked(event)
+    }
     //Stations UI Button Click
     else if (stationsUIBtn.includes(event.target.id)) {
         OverlayUIListener(event.target.id)
@@ -42,18 +46,18 @@ document.addEventListener("pointerdown", event => {
     }
 
     // Process GameObject Tap Interaction
-    else if (walkerSelection.startsWith("Collider PdfBORRAME") && event.target.id == "renderCanvas") {
-        document.exitPointerLock();
-        let ColliderIndex = 13
-        let i = walkerSelection.charAt(ColliderIndex)
+    // else if (walkerSelection.startsWith("Collider PdfBORRAME") && event.target.id == "renderCanvas") {
+    //     document.exitPointerLock();
+    //     let ColliderIndex = 13
+    //     let i = walkerSelection.charAt(ColliderIndex)
 
-        document.getElementsByClassName("overlay-content")[3].classList.toggle("close")
-        document.getElementsByClassName("station-content")[3].classList.toggle("close")
-        UISolutionPressed(i)
-        // if (!iOS()) {
-        //     document.getElementById("download-" + i).click()
-        // }
-    }
+    //     document.getElementsByClassName("overlay-content")[3].classList.toggle("close")
+    //     document.getElementsByClassName("station-content")[3].classList.toggle("close")
+    //     UISolutionPressed(i)
+    //     // if (!iOS()) {
+    //     //     document.getElementById("download-" + i).click()
+    //     // }
+    // }
 
     else if (walkerSelection.startsWith("Collider Letter o") && scene.activeCamera == walkerCam && !iOS() && !isMobileDevice()) {
         // document.exitPointerLock();
@@ -66,7 +70,7 @@ document.addEventListener("pointerdown", event => {
         band = walkerSelection.charAt(ColliderIndex)
         //setRadarSelection(band)
     }
-    else if(event.target.id == "impressum-btn"){
+    else if (event.target.id == "impressum-btn") {
         document.getElementsByClassName("impressumArea")[0].classList.toggle("close")
     }
     //avoid having to click again on UI to be able to move in walkercam
@@ -77,6 +81,17 @@ document.addEventListener("pointerdown", event => {
     }
 })
 
+let showStationNames = true;
+function StationNameCliked(ev) {
+
+    let childElem = ev.target
+    document.getElementById("station-names").style.display = "none"
+    if (childElem.id.startsWith("sn-")) {
+        let stationIndex = parseInt(childElem.id.charAt(3))
+        //handleUISelection(childElem, stationIndex)
+        travelCamToStation(stationIndex)
+    }
+}
 // OVERLAY UI Solutions
 function UISolutionPressed(index) {
     let elem = document.getElementById("solution-content-" + index)
@@ -97,17 +112,17 @@ function setRadarSelection(band) {
     //ToggleSubmenuSelection(radarElem)
 }
 
-function setRadarSelection_sideEffects(){
+function setRadarSelection_sideEffects() {
     closeOverlays(1, false)
 }
 
 function closeOverlays(index, sideEffects) {
-    if(sideEffects){
+    if (sideEffects) {
         closeOverlay_sideEffects(index)
     }
 
     document.getElementsByClassName("overlay-content")[index].classList.add("close")
-    
+
     if (scene.activeCamera == walkerCam) {
         document.getElementsByClassName("station-content")[index].classList.add("close")
     }
@@ -127,8 +142,8 @@ function closeOverlays(index, sideEffects) {
     }
 }
 
-function closeOverlay_sideEffects(index){
-    if(index != 5 && index != 2)
+function closeOverlay_sideEffects(index) {
+    if (index != 5 && index != 2)
         travelCamToStation(index)
 }
 let radar_video = ["https://www.youtube.com/embed/hsPmxislGSQ", "https://www.youtube.com/embed/kz1InmmkZ0s", "https://www.youtube.com/embed/7QbX8IYmwFU"]
@@ -154,11 +169,18 @@ function setSoftwareVideo(i, j) {
     }
 }
 
-let menuStationsDict = {0: "computer", 1: "mediation", 2: "toys", 3: "home_repair_service", 4: "contact_page", 5: "school", 6:"toys"}
+let menuStationsDict = { 0: "computer", 1: "mediation", 2: "toys", 3: "home_repair_service", 4: "contact_page", 5: "school", 6: "toys" }
+//HANDLE STATION NAMES VISIBILITY
 function showMenuControl(index) {
     document.getElementsByClassName("overlay-weather-btns")[0].classList.remove("close")
     document.getElementsByClassName("main-menus")[0].classList.remove("close")
     document.getElementById("to-overlay").innerHTML = menuStationsDict[index]
+    
+    //HANDLE STATION NAMES VISIBILITY
+    if (index == 4) {
+        //show stationames
+        document.getElementById("station-names").style.display = "initial"
+    }
 }
 
 function hideMenuControl() {
@@ -189,8 +211,8 @@ function OverlayUIListener(elem_id) {
     if (elem_id == "to-overlay") {
         let index = getKeyByValue(menuStationsDict, icon)
         //click on index 6, open index 2
-        if(index==6){
-            index=2
+        if (index == 6) {
+            index = 2
         }
         document.getElementsByClassName("overlay-content")[index].classList.toggle("close")
         document.getElementsByClassName("station-content")[index].classList.toggle("close")
@@ -210,10 +232,10 @@ function OverlayUIListener(elem_id) {
         document.getElementsByClassName("video-content")[2].classList.toggle("close")
     }
     else if (elem_id.startsWith("x-")) {
-        
+
         let station = parseInt(elem_id.charAt(2))
-        
-        if(elem_id.charAt(4) == "r"){
+
+        if (elem_id.charAt(4) == "r") {
             if (scene.activeCamera == rotateCam) {
                 ToWalkerMode()
             }
@@ -221,27 +243,27 @@ function OverlayUIListener(elem_id) {
             showMenuControl(station)
             return
         }
-        
+
         closeOverlays(station, true)
         showMenuControl(station)
     }
     else if (elem_id.startsWith("b-")) {
-        
+
         let station = parseInt(elem_id.charAt(2))
         document.getElementsByClassName("station-content")[station].classList.toggle("close")
         console.log(elem_id.length)
-        if(elem_id.length == 3){
+        if (elem_id.length == 3) {
             document.getElementsByClassName("video-content")[station].classList.toggle("close")
         }
-        else{
+        else {
             console.log(station)
             let subStation = elem_id.charAt(4)
-            if(station == 2){
-                document.getElementById("windshear-"+ subStation).classList.toggle("close")
+            if (station == 2) {
+                document.getElementById("windshear-" + subStation).classList.toggle("close")
             }
-           
-            else if(station == 3){
-                document.getElementById("solution-content-"+ subStation).classList.toggle("close")
+
+            else if (station == 3) {
+                document.getElementById("solution-content-" + subStation).classList.toggle("close")
             }
         }
     }
@@ -250,14 +272,17 @@ function OverlayUIListener(elem_id) {
 
 function MenuUIListener(ev) {
     let childElem = ev.target.children[0]
+
+
     if (childElem.id.startsWith("go-")) {
-        if (scene.activeCamera == rotateCam) {
-            ToWalkerMode()
-        }
         console.log(childElem.id)
         let stationIndex = parseInt(childElem.id.charAt(3))
         //handleUISelection(childElem, stationIndex)
         travelCamToStation(stationIndex)
+        if (parseInt(childElem.id.charAt(3)) != 4) {
+            //show stationames
+            document.getElementById("station-names").style.display = "none"
+        }
 
     }
 }
