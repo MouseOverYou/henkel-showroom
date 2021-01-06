@@ -163,6 +163,13 @@ function CreateCustomMaterials() {
     plane_3_mat.opacityTexture = plane_3_text
     plane_3.material = plane_3_mat
     plane_3.material.unlit = true
+
+    let plane_4_text = new BABYLON.Texture("./assets/display solutions plane.png", scene)
+    let plane_4_mat = new BABYLON.PBRMaterial("plane_4_mat", scene)
+    plane_4_mat.albedoTexture = plane_4_text
+    plane_4_mat.opacityTexture = plane_4_text
+    plane_4.material = plane_4_mat
+    plane_4.material.unlit = true
 }
 
 function createVideoMat() {

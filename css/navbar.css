@@ -1,0 +1,51 @@
+.menu-group {
+    display: flex;
+    align-items: center;
+    background-color: blueviolet;
+    margin-left: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.menupoint-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    padding-left: 20px;
+    color:aliceblue;
+    margin: 0px;
+}
+
+.menupoint-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    padding-left: 20px;
+    color:aliceblue;
+}
+
+.material-icons.navbar-menu-icon{
+        font-size: 20px;
+        color: var(--leo-gray-color);
+        padding: 10px;
+        pointer-events: auto;
+        cursor: pointer;
+}
+
+.no-click {
+    /*avoid text Highlioghting*/
+    pointer-events: none;
+    cursor: none;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                      supported by Chrome, Edge, Opera and Firefox */
+}

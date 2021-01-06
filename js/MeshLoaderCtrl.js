@@ -1,24 +1,30 @@
 let Showroom, ShowroomLoaderTask, CloudsTask
-let Weather_C_ProductsTask, Weather_X_ProductsTask, Weather_S_ProductsTask, Weather_C_P, Weather_X_P, plane_1, plane_2, plane_3
+let Weather_C_ProductsTask, Weather_X_ProductsTask, Weather_S_ProductsTask, Weather_C_P, Weather_X_P, Weather_DISPLAY_P, 
+    plane_1, plane_2, plane_3, plane_4
 
 function LoadAssets(scene, assetsManager) {
     //Weather S
     Weather_S_P = new BABYLON.TransformNode("Weather_S_P");
-    plane_3 = BABYLON.MeshBuilder.CreatePlane("plane_3", {size:100}, scene);
+    plane_3 = BABYLON.MeshBuilder.CreatePlane("plane_3", {size:150}, scene);
     plane_3.position.y = 50;
     plane_3.parent = Weather_S_P;
 
     //Weather C
     Weather_C_P = new BABYLON.TransformNode("Weather_C_P");
-    plane_1 = BABYLON.MeshBuilder.CreatePlane("plane_1", {size:100}, scene);
+    plane_1 = BABYLON.MeshBuilder.CreatePlane("plane_1", {size:150}, scene);
     plane_1.position.y = 50;
     plane_1.parent = Weather_C_P;
 
     //Weather X
     Weather_X_P = new BABYLON.TransformNode("Weather_X_P");
-    plane_2 = BABYLON.MeshBuilder.CreatePlane("plane_2", {size:100}, scene);
+    plane_2 = BABYLON.MeshBuilder.CreatePlane("plane_2", {size:150}, scene);
     plane_2.position.y = 50;
     plane_2.parent = Weather_X_P;
+
+    Weather_DISPLAY_P = new BABYLON.TransformNode("Weather_DISPLAY_P");
+    plane_4 = BABYLON.MeshBuilder.CreatePlane("plane_4", {size:150}, scene);
+    plane_4.position.y = 50;
+    plane_4.parent = Weather_DISPLAY_P;
 
     //CanyonEnvTask
     CanyonEnvTask = assetsManager.addCubeTextureTask("CanyonEnvTask", "./assets/Studio_Softbox_2Umbrellas_cube_specular (1).dds");
@@ -132,6 +138,11 @@ function AccessModelsForFunctionality() {
         }
         else if (elem.name.startsWith("P_1")) {
             elem.isVisible = false
+            Weather_DISPLAY_P.position = elem.getAbsolutePosition()
+            Weather_DISPLAY_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
+            Weather_DISPLAY_P.position.y = 12
+            Weather_DISPLAY_P.rotation.y = 230 * (Math.PI / 180)
+            feedWithCollider(Weather_DISPLAY_P, 100, 100, 25, 0, 25, 0)
         }
         //weather c
         else if (elem.name.startsWith("P_2")) {
@@ -141,7 +152,7 @@ function AccessModelsForFunctionality() {
             Weather_C_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
             Weather_C_P.position.y = 12
             Weather_C_P.rotation.y = 230 * (Math.PI / 180)
-            feedWithCollider(Weather_C_P, 200, 75, 100, 0, 25, 0)
+            feedWithCollider(Weather_C_P, 100, 100, 25, 0, 25, 0)
         }
         //weather x
         else if (elem.name.startsWith("P_3")) {
@@ -151,7 +162,7 @@ function AccessModelsForFunctionality() {
             Weather_X_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
             Weather_X_P.position.y = 12
             Weather_X_P.rotation.y = -45 * (Math.PI / 180)
-            feedWithCollider(Weather_X_P, 200, 75, 100, 0, 25, 0)
+            feedWithCollider(Weather_X_P, 100, 100, 25, 0, 25, 0)
         }
         //weather s
         else if (elem.name.startsWith("P_4")) {
@@ -161,7 +172,7 @@ function AccessModelsForFunctionality() {
             Weather_S_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
             Weather_S_P.position.y = 12
             Weather_S_P.rotation.y = 230 * (Math.PI / 180)
-            feedWithCollider(Weather_S_P, 200, 75, 100, 0, 25, 0)
+            feedWithCollider(Weather_S_P, 100, 100, 25, 0, 25, 0)
         }
 
         // radar discover

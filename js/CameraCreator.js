@@ -7,8 +7,8 @@ function SetupCameras(scene) {
     CreateWalkerCam(scene)
     rotateCam = CreateRotateCam(scene, "mainRotateCam", new BABYLON.Vector3(0, 5, 0))
 
-    SetWalkerMouseInteraction()
-    CreateRaycast(scene)
+    //SetWalkerMouseInteraction()
+    //CreateRaycast(scene)
 
 }
 
@@ -79,13 +79,13 @@ function CreateWalkerCam(scene) {
     walkerCam.minZ = 0.05
 
     //Controls  WASD
-    walkerCam.keysUp.push(87);
-    walkerCam.keysDown.push(83);
-    walkerCam.keysRight.push(68);
-    walkerCam.keysLeft.push(65);
-    walkerCam.speed = 2
+    // walkerCam.keysUp.push(87);
+    // walkerCam.keysDown.push(83);
+    // walkerCam.keysRight.push(68);
+    // walkerCam.keysLeft.push(65);
+    // walkerCam.speed = 2
 
-    walkerCam.attachControl(canvas, true);
+    // walkerCam.attachControl(canvas, true);
 
     // Add collider Object
     camcoll = new BABYLON.MeshBuilder.CreateBox("cam collisionss", { height: 1, width: 1, depth: 1 }, scene)

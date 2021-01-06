@@ -2,7 +2,7 @@
 document.addEventListener("keydown", event => {
     //Key Space. jump
     if (event.code === "Space") {
-        jump(3)
+        //jump(3)
     }
 })
 
@@ -26,7 +26,7 @@ document.addEventListener("pointerdown", event => {
         event.target.parentNode.style.opacity = 1;
     }
     //UI Button Click
-    else if (event.target.classList.contains("boxUIText")) {
+    else if (event.target.classList.contains("menu-group")) {
         console.log(event.target.children[0].id)
         MenuUIListener(event)
     }
@@ -42,7 +42,7 @@ document.addEventListener("pointerdown", event => {
     }
 
     // Process GameObject Tap Interaction
-    else if (walkerSelection.startsWith("Collider Pdf") && event.target.id == "renderCanvas") {
+    else if (walkerSelection.startsWith("Collider PdfBORRAME") && event.target.id == "renderCanvas") {
         document.exitPointerLock();
         let ColliderIndex = 13
         let i = walkerSelection.charAt(ColliderIndex)
@@ -64,7 +64,7 @@ document.addEventListener("pointerdown", event => {
     else if (walkerSelection.startsWith("Collider Weather_") && scene.activeCamera == walkerCam && !iOS() && !isMobileDevice()) {
         let ColliderIndex = 17
         band = walkerSelection.charAt(ColliderIndex)
-        setRadarSelection(band)
+        //setRadarSelection(band)
     }
     else if(event.target.id == "impressum-btn"){
         document.getElementsByClassName("impressumArea")[0].classList.toggle("close")
@@ -256,24 +256,10 @@ function MenuUIListener(ev) {
         }
         console.log(childElem.id)
         let stationIndex = parseInt(childElem.id.charAt(3))
-        handleUISelection(childElem, stationIndex)
+        //handleUISelection(childElem, stationIndex)
         travelCamToStation(stationIndex)
 
     }
-
-    else if (childElem.id.startsWith("ra-")) {
-        band = childElem.id.charAt(3)
-        setRadarSelection(band)
-        ToggleSubmenuSelection(childElem)
-        setRadarVideo()
-    }
-
-
-    else if (childElem.id.startsWith("sol-")) {
-        ev.target.click()
-        ToggleSubmenuSelection(3)
-    }
-
 }
 
 let lastMenuSelection
@@ -288,31 +274,7 @@ function handleUISelection(elem, stationIndex) {
     }
     lastMenuSelection = elem
     elem.classList.add("menu-selected")
-    elem.parentNode.children[1].classList.add("dot-selected")
-
-    // if there is some submenu selected, deselect
-    if (lastSubmenuSelection != undefined) {
-        lastSubmenuSelection.classList.remove("menu-selected")
-        lastSubmenuSelection.parentNode.children[1].classList.remove("dot-selected")
-    }
-
-    // open each submenu
-    //SUB MENUS 1
-    // for (let pdf of pdfsUI) {
-    //     if (stationIndex == 3)
-    //         pdf.classList.remove("hidden-box")
-    //     else
-    //         pdf.classList.add("hidden-box")
-    // }
-
-    //SUB MENUS 3
-    // for (let rad of radarsUI) {
-    //     if (stationIndex == 1)
-    //         rad.classList.remove("hidden-box")
-    //     else
-    //         rad.classList.add("hidden-box")
-    // }
-
+    //elem.parentNode.children[1].classList.add("dot-selected")
 }
 
 let lastSubmenuSelection

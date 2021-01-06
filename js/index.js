@@ -53,6 +53,7 @@ engine.runRenderLoop(function () {
         A_LooksAt_B(Weather_C_P, walkerCam)
         A_LooksAt_B(Weather_X_P, walkerCam)
         A_LooksAt_B(Weather_S_P, walkerCam)
+        A_LooksAt_B(Weather_DISPLAY_P, walkerCam)
     }
 });
 
