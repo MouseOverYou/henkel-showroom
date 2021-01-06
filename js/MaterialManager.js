@@ -1,7 +1,4 @@
-let woodMat, LeuchteMat, wheelMatIn, wheelMatOut
-let wheelAlbedo = []
-var wheelMetal = []
-let coatMat, PostersMat;
+
 let MainSceneMats=[]
 let Led_Radar_Mats = []
 let Led_Pdf_Mats = []
@@ -9,6 +6,7 @@ let Radar_Mats = []
 let Radar_C_Mats = []
 let Radar_X_Mats = []
 let Radar_S_Mats = []
+let logo_anim_vid;
 function ChangeMaterialProperties() {
 
     Radar_Mats.push(Radar_C_Mats,Radar_X_Mats, Radar_S_Mats)
@@ -16,6 +14,8 @@ function ChangeMaterialProperties() {
     Radar_C_Mats.push("CGroup")
     Radar_X_Mats.push("XGroup")
     Radar_S_Mats.push("SGroup")
+
+    logo_anim_vid = CreateVideoTexture("logo_anim_vid", "./assets/UV_Screen_01.mp4")
     
     var redLeo = new BABYLON.Color3.FromHexString("#FF0000");
     var blueBay = new BABYLON.Color3.FromHexString("#063c9d");
@@ -37,21 +37,7 @@ function ChangeMaterialProperties() {
 
         mat.reflectionTexture = hdrTexture;
         mat.transparencyMode = 2
-        if (mat.name.startsWith("60dx")) {
-            Radar_X_Mats.push(mat)
-            continue
-        }
-
-        if (mat.name.startsWith("wc") ) {
-            Radar_C_Mats.push(mat)
-            continue
-        }
-        if (mat.name.startsWith("ws") ) {
-            Radar_S_Mats.push(mat)
-            continue
-        }
-        
-        
+                
         MainSceneMats.push(mat)
         if(mat.name == "Gray Wall A"){
             mat.albedoColor = GrayLight
@@ -84,6 +70,10 @@ function ChangeMaterialProperties() {
             mat.roughness = 0.25
         }
 
+        else if(mat.name == "Screen Texture"){
+            console.log("I AM HERE")
+            mat.albedoTexture = logo_anim_vid
+        }
         else if(mat.name == "White Led plus"){
             mat.emissiveColor = new BABYLON.Color3.FromHexString("#FFFFFF")
         }
@@ -189,4 +179,11 @@ function createVideoMat() {
 
     return videoMat;
 }
-
+function CreateVideoTexture(name, url){
+    var vidText = new BABYLON.VideoTexture(name, url, scene, true, false);
+    vidText.vScale = -1
+    //vidText.video.pause()
+    vidText.video.loop = true
+    //vidText.getAlphaFromRGB =true
+    return vidText;
+}
