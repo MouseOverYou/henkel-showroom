@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <!-- gsap animationnn-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.2/gsap.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -33,29 +36,21 @@
 
 <body style="display: flex;">
     <div id="nav-bar" style="width: auto; position: relative;">
-        <div style="position: relative; user-select: auto; width: 300px; height: 100%; max-width: 250px; 
-        min-width: 150px; min-height: 100%; box-sizing: border-box; ">
-            <div id="header" style="display: flex">
-                <img id="logo-navbar" src="assets/henkel logo.png" style="top:0%; height: 20%; width: 20%;">
-                <div id="title-navbar"  class="menupoint-title">NAVBAR</div>
+        <div style="position: relative; user-select: auto; width: 300px; height: 100%; max-width: 200px; 
+        min-width: 150px; min-height: 100%; box-sizing: border-box; background-color: #E1000F; ">
+            <div id="header" style="text-align: center;display: block;">
+                <img id="logo-navbar" src="assets/ui/HENKEL_LogoFilled_Red_sRGB.png" style="padding-top:15%; height: 35%; width: 35%;">
             </div>
             <div id="menupoints">
-                <div class="menu-group">
-                    <span class="material-icons navbar-menu-icon" style="opacity: 100">mood</span>
-                    <p class="menupoint-text">ICON AGENDA</p>
-                </div>
-                <div class="menu-group">
-                    <span class="material-icons navbar-menu-icon" style="opacity: 100">mood</span>
-                    <p class="menupoint-text">ICON CHAT</p>
-                </div>
-                <div class="menu-group" style="margin-top:60px">
+
+                <div class="menu-group" style="margin-top:120px">
                     <p id="go-0" class="menupoint-text">DISPLAY SOLUTIONS</p>
                 </div>
                 <div class="menu-group">
-                    <p id="go-1" class="menupoint-text">E-MOBILITY</p>
+                    <p id="go-1" class="menupoint-text">E-MOBILITY SOLUTIONS</p>
                 </div>
                 <div class="menu-group">
-                    <p id="go-2" class="menupoint-text">PRESIQUIZ</p>
+                    <p id="go-2" class="menupoint-text">PRESENTATION + QUIZ</p>
                 </div>
                 <div class="menu-group">
                     <p id="go-3" class="menupoint-text">MARKET SEGMENTS</p>
@@ -63,6 +58,22 @@
                 <div class="menu-group">
                     <p id="go-4" class="menupoint-text">HOME</p>
                 </div>
+                <div id="non-stations-group" style="position: fixed;
+                bottom: 0;">
+                    <div class="menu-group">
+                        <div>
+                            <img src="assets/ui/Agenda-Icon.png" class="menupoint-icon"></img>
+                        </div>
+                        <p class="menupoint-text">AGENDA</p>
+                    </div>
+                    <div class="menu-group">
+                        <div>
+                            <img src="assets/ui/Chats-Icon.png" class="menupoint-icon""></img>
+                        </div>
+                        <p class="menupoint-text">CHAT</p>
+                    </div>
+                </div>>
+
             </div>
         </div>
     </div>

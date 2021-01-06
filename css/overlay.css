@@ -4,7 +4,7 @@
 }
 
 p, a {
-    font-family: 'Inter', sans-serif;
+        font-family: 'Open Sans', sans-serif;
         /*avoid text Highlioghting*/
         pointer-events: none;
         cursor: none;
