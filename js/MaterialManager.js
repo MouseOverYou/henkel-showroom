@@ -181,7 +181,8 @@ function createVideoMat() {
 }
 function CreateVideoTexture(name, url){
     var vidText = new BABYLON.VideoTexture(name, url, scene, true, false);
-    vidText.vScale = -1
+    vidText.vScale = 1
+    vidText.uScale = -1
     vidText.video.pause()
     vidText.video.loop = true
     //vidText.getAlphaFromRGB =true

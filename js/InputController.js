@@ -204,6 +204,15 @@ function handleWindshear(i) {
     }
 }
 
+// SHOW DIGILOUNGE
+function ShowDigilounge(show){
+    if(show){
+        document.getElementById("howto-overlay").classList.add("close")
+    }
+    else{
+        document.getElementById("howto-overlay").classList.add("close")
+    }
+}
 
 // MAIN LISTENERS
 function OverlayUIListener(elem_id) {
