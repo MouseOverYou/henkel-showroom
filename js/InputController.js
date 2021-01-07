@@ -20,6 +20,11 @@ document.addEventListener("pointerdown", event => {
         return
     }
 
+    //INTERACT ONE TIME TO PLAY VIDEO ON SCREEN
+    if(logo_anim_vid.video.paused){
+        logo_anim_vid.video.play();
+    }
+
     console.log(event.target)
     // REveal DEbugger
     if (event.target.id.startsWith("debugger")) {
@@ -59,17 +64,17 @@ document.addEventListener("pointerdown", event => {
     //     // }
     // }
 
-    else if (walkerSelection.startsWith("Collider Letter o") && scene.activeCamera == walkerCam && !iOS() && !isMobileDevice()) {
-        // document.exitPointerLock();
-        // document.getElementsByClassName("overlay-content")[2].classList.toggle("close")
-        // document.getElementsByClassName("station-content")[2].classList.toggle("close")
-    }
+    // else if (walkerSelection.startsWith("Collider Letter o") && scene.activeCamera == walkerCam && !iOS() && !isMobileDevice()) {
+    //     // document.exitPointerLock();
+    //     // document.getElementsByClassName("overlay-content")[2].classList.toggle("close")
+    //     // document.getElementsByClassName("station-content")[2].classList.toggle("close")
+    // }
 
-    else if (walkerSelection.startsWith("Collider Weather_") && scene.activeCamera == walkerCam && !iOS() && !isMobileDevice()) {
-        let ColliderIndex = 17
-        band = walkerSelection.charAt(ColliderIndex)
-        //setRadarSelection(band)
-    }
+    // else if (walkerSelection.startsWith("Collider Weather_") && scene.activeCamera == walkerCam && !iOS() && !isMobileDevice()) {
+    //     let ColliderIndex = 17
+    //     band = walkerSelection.charAt(ColliderIndex)
+    //     //setRadarSelection(band)
+    // }
     else if (event.target.id == "impressum-btn") {
         document.getElementsByClassName("impressumArea")[0].classList.toggle("close")
     }

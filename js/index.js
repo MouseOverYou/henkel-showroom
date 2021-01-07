@@ -34,6 +34,7 @@ var createScene = function () {
 
     }
 
+
     return scene;
 };
 /******* End of the create scene function ******/

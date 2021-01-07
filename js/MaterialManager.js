@@ -15,7 +15,7 @@ function ChangeMaterialProperties() {
     Radar_X_Mats.push("XGroup")
     Radar_S_Mats.push("SGroup")
 
-    logo_anim_vid = CreateVideoTexture("logo_anim_vid", "./assets/UV_Screen_01.mp4")
+    logo_anim_vid = CreateVideoTexture("logo_anim_vid", "./assets/UV_Screen_02.mp4")
     
     var redLeo = new BABYLON.Color3.FromHexString("#FF0000");
     var blueBay = new BABYLON.Color3.FromHexString("#063c9d");
@@ -182,7 +182,7 @@ function createVideoMat() {
 function CreateVideoTexture(name, url){
     var vidText = new BABYLON.VideoTexture(name, url, scene, true, false);
     vidText.vScale = -1
-    //vidText.video.pause()
+    vidText.video.pause()
     vidText.video.loop = true
     //vidText.getAlphaFromRGB =true
     return vidText;
