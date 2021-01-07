@@ -15,7 +15,7 @@ function ChangeMaterialProperties() {
     Radar_X_Mats.push("XGroup")
     Radar_S_Mats.push("SGroup")
 
-    logo_anim_vid = CreateVideoTexture("logo_anim_vid", "./assets/UV_Screen_02.mp4")
+    logo_anim_vid = CreateVideoTexture("logo_anim_vid", "./assets/UV_Screen_03.mp4")
     
     var redLeo = new BABYLON.Color3.FromHexString("#FF0000");
     var blueBay = new BABYLON.Color3.FromHexString("#063c9d");
