@@ -99,6 +99,15 @@ function LoadAssets(scene, assetsManager) {
         AccessModelsForFunctionality()
         AddGlow()
         HandleWebglSetup()
+        let barWidth = parseInt(document.getElementById("trueWidth").style.maxWidth, 10); 
+        console.log(barWidth)
+        let middleCanvas = canvas.width/2
+        console.log(middleCanvas)
+        let iconSize = document.getElementById("sn-4").width
+        console.log(iconSize)
+        let middleDistance = (middleCanvas + barWidth - iconSize/2).toString() + "px"
+        console.log(middleDistance)
+        document.getElementById("sn-4").style.left= middleDistance 
     }
     //Asset Manager check
     assetsManager.onProgress = function (remainingCount, totalCount, lastFinishedTask) {
@@ -234,7 +243,7 @@ function AccessModelsForFunctionality() {
                             console.log(indexElem)
                             handleUISelection(document.getElementById(elemID), parseInt(n))
                             //Handle Weather Controls automatically
-                            showMenuControl(indexElem)
+                            //showMenuControl(indexElem)
                         } 
                     }
                 });

@@ -36,7 +36,7 @@
 
 <body style="display: flex;">
     <div id="nav-bar" style="width: auto; position: relative;">
-        <div style="position: relative; user-select: auto; width: 300px; height: 100%; max-width: 200px; 
+        <div id="trueWidth" style="position: relative; user-select: auto; width: 300px; height: 100%; max-width: 200px; 
         min-width: 150px; min-height: 100%; box-sizing: border-box; background-color: #E1000F; ">
             <div id="header" style="text-align: center;display: block;">
                 <img id="logo-navbar" src="assets/ui/HENKEL_LogoFilled_Red_sRGB.png" style="padding-top:15%; height: 35%; width: 35%;">
@@ -54,9 +54,6 @@
                 </div>
                 <div class="menu-group">
                     <p id="go-3" class="menupoint-text">MARKET SEGMENTS</p>
-                </div>
-                <div class="menu-group">
-                    <p id="go-4" class="menupoint-text">HOME</p>
                 </div>
                 <div id="non-stations-group" style="position: fixed;
                 bottom: 0;">
@@ -756,16 +753,7 @@
         </div>
 
         <!--Overlay Buttons-->
-        <div class="overlay-weather-btns" style="display: none">
-            <div class="main-menus">
-                <span id="to-overlay" class="material-icons md-60 weather-icon noselect">school</span>
-            </div>
-            <div class="view-3d-btn close">
-                <a id="x-1-r" class="material-icons sm-80" style='left: 25px;'>close</a>
-                <a id="video-btn" class="material-icons md-60">ondemand_video</a>
-                <a id="pdf-radar-btn" class="material-icons md-60" onclick="openRadarPdf()">picture_as_pdf</a>
-            </div>
-        </div>
+        <img id="sn-4" src="assets/ui/Home-BG-Full.png">
 
         <!--UI FINAL-->
         <canvas id="renderCanvas" touch-action="none"></canvas>

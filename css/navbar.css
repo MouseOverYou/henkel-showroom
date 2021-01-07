@@ -77,3 +77,11 @@
     pointer-events: auto;
     cursor: pointer;
 }
+
+#sn-4{
+    position: absolute;
+    top: 90%;
+    max-width: 48px;
+    pointer-events: auto;
+    cursor: pointer;
+}

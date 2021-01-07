@@ -35,7 +35,7 @@ document.addEventListener("pointerdown", event => {
         console.log(event.target.children[0].id)
         MenuUIListener(event)
     }
-    else if (event.target.classList.contains("station-names-text")) {
+    else if (event.target.classList.contains("station-names-text") || event.target.id=="sn-4") {
         console.log(event.target.id)
         StationNameCliked(event)
     }
@@ -86,7 +86,6 @@ document.addEventListener("pointerdown", event => {
     }
 })
 
-let showStationNames = true;
 function StationNameCliked(ev) {
 
     let childElem = ev.target
@@ -176,11 +175,8 @@ function setSoftwareVideo(i, j) {
 
 let menuStationsDict = { 0: "computer", 1: "mediation", 2: "toys", 3: "home_repair_service", 4: "contact_page", 5: "school", 6: "toys" }
 //HANDLE STATION NAMES VISIBILITY
-function showMenuControl(index) {
-    document.getElementsByClassName("overlay-weather-btns")[0].classList.remove("close")
-    document.getElementsByClassName("main-menus")[0].classList.remove("close")
-    document.getElementById("to-overlay").innerHTML = menuStationsDict[index]
-    
+function showStationNames(index) {
+
     //HANDLE STATION NAMES VISIBILITY
     if (index == 4) {
         //show stationames
@@ -245,12 +241,10 @@ function OverlayUIListener(elem_id) {
                 ToWalkerMode()
             }
             closeOverlays(1, true)
-            showMenuControl(station)
             return
         }
 
         closeOverlays(station, true)
-        showMenuControl(station)
     }
     else if (elem_id.startsWith("b-")) {
 
@@ -303,7 +297,7 @@ function handleUISelection(elem, stationIndex) {
         lastMenuSelection.parentNode.children[1].classList.remove("dot-selected")
     }
     lastMenuSelection = elem
-    elem.classList.add("menu-selected")
+    //elem.classList.add("menu-selected")
     //elem.parentNode.children[1].classList.add("dot-selected")
 }
 

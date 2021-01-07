@@ -38,7 +38,7 @@ function travelCamToStation(i) {
 function travelCamToStation_sideEffects(i) {
     // SHOW UI After Camera Animation animating
     window.setTimeout(() => {
-        showMenuControl(i)
+        showStationNames(i)
     }, 1500)
 }
 
@@ -82,7 +82,7 @@ function AnimateEveryFrame() {
         DiscoverMeshes[1].rotation.y = AnimRate * 0.5 * (Math.PI / 180)
         DiscoverMeshes[2].rotation.y = AnimRate * 0.5 * (Math.PI / 180)
     }
-    CheckLookingAtNew()
+    //CheckLookingAtNew()
 }
 // Mat Animations
 async function HandleMatsTransparency(matGroup, toValue) {
