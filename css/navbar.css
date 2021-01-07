@@ -84,4 +84,5 @@
     max-width: 48px;
     pointer-events: auto;
     cursor: pointer;
+    z-index: 2;
 }

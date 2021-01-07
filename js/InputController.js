@@ -94,6 +94,12 @@ function StationNameCliked(ev) {
         let stationIndex = parseInt(childElem.id.charAt(3))
         //handleUISelection(childElem, stationIndex)
         travelCamToStation(stationIndex)
+        if(stationIndex==2){
+            ShowDigilounge(true)
+        }
+        else{
+            ShowDigilounge(false)
+        }    
     }
 }
 // OVERLAY UI Solutions
@@ -207,7 +213,10 @@ function handleWindshear(i) {
 // SHOW DIGILOUNGE
 function ShowDigilounge(show){
     if(show){
-        document.getElementById("howto-overlay").classList.add("close")
+        window.setTimeout(() => {
+            document.getElementById("howto-overlay").classList.remove("close")
+        }, 1500)
+        
     }
     else{
         document.getElementById("howto-overlay").classList.add("close")
@@ -291,6 +300,13 @@ function MenuUIListener(ev) {
             //show stationames
             document.getElementById("station-names").style.display = "none"
         }
+        if(stationIndex==2){
+            console.log("HOLA")
+            ShowDigilounge(true)
+        }
+        else{
+            ShowDigilounge(false)
+        }    
 
     }
 }
