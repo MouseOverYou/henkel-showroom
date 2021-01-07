@@ -20,6 +20,10 @@ document.addEventListener("pointerdown", event => {
         return
     }
 
+    if (event.target.id=="quiz-screen") {
+        toNextQuestion();
+    }
+
     //INTERACT ONE TIME TO PLAY VIDEO ON SCREEN
     if(logo_anim_vid.video.paused){
         logo_anim_vid.video.play();
@@ -38,6 +42,7 @@ document.addEventListener("pointerdown", event => {
     else if (event.target.classList.contains("station-names-text") || event.target.id=="sn-4") {
         console.log(event.target.id)
         StationNameCliked(event)
+        toFirstQuestion()
     }
     //Stations UI Button Click
     else if (stationsUIBtn.includes(event.target.id)) {
