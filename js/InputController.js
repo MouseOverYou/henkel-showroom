@@ -38,6 +38,7 @@ document.addEventListener("pointerdown", event => {
     else if (event.target.classList.contains("menu-group")) {
         console.log(event.target.children[0].id)
         MenuUIListener(event)
+        toFirstQuestion()
     }
     else if (event.target.classList.contains("station-names-text") || event.target.id=="sn-4") {
         console.log(event.target.id)
