@@ -31,7 +31,7 @@ function rgb2hex(rgb) {
 //loading screen
 BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
     if (document.getElementById("customLoadingScreenDiv")) {
-        document.getElementById("customLoadingScreenDiv").style.display = "none";
+        document.getElementById("customLoadingScreenDiv").style.display = "initial";
         // Do not add a loading screen if there is already one
         return;
     }
