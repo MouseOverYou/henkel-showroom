@@ -126,7 +126,7 @@ var colMat
 function CreateCustomMaterials() {
     colMat = new BABYLON.StandardMaterial("colMat", scene)
     colMat.wireframe = true
-    colMat.alpha = 1;
+    colMat.alpha = 0;
 
     let plane_1_text = new BABYLON.Texture("./assets/em battery pack.png", scene)
     let plane_1_mat = new BABYLON.PBRMaterial("plane_1_mat", scene)

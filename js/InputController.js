@@ -32,6 +32,7 @@ document.addEventListener("pointerdown", event => {
     //X CLOSE ICON PRESSED
     if (event.target.classList.contains("icon-close")) {
         CloseParentOverlay(event)
+        document.getElementById("software-video-content").children[0].src = ""
     }
 
     //X CLOSE ICON PRESSED
@@ -42,6 +43,7 @@ document.addEventListener("pointerdown", event => {
     if(event.target.id=="open-video"){
         document.getElementsByClassName("layer2")[0].parentNode.classList.add("close")
         document.getElementsByClassName("layer3")[0].parentNode.classList.remove("close")
+        document.getElementById("software-video-content").children[0].src = "https://www.youtube.com/embed/G-AYEt6bmlM" 
     }
 
     if(event.target.classList.contains("ui-collider")){
@@ -161,6 +163,9 @@ function StationNameCliked(ev) {
         let stationIndex = parseInt(childElem.id.charAt(3))
         //handleUISelection(childElem, stationIndex)
         travelCamToStation(stationIndex)
+        if(stationIndex == 1){
+            scene.getMeshByName("Collider Weather_C_P").isPickable=true
+        }
         if (stationIndex == 2) {
             ShowDigilounge(true)
         }
@@ -267,6 +272,8 @@ function restartUI(index) {
         document.getElementById("sn-1").classList.add("hidden-box")
         document.getElementById("sn-0").classList.add("hidden-box")
         document.getElementById("sn-5").classList.remove("hidden-box")
+
+        scene.getMeshByName("Collider Weather_C_P").isPickable=false
     }
 
 }
@@ -276,20 +283,6 @@ function hideMenuControl() {
     document.getElementById("to-overlay").innerHTML = ""
 }
 
-//windshear
-function handleWindshear(i) {
-    let windshearID = "windshear-" + i
-    document.getElementById(windshearID).classList.remove("close")
-    document.getElementsByClassName("station-content")[2].classList.add("close")
-    if (i == 0) {
-        let otherID = "windshear-1"
-        document.getElementById(otherID).classList.add("close")
-    }
-    else if (i == 1) {
-        let otherID = "windshear-0"
-        document.getElementById(otherID).classList.add("close")
-    }
-}
 
 // SHOW DIGILOUNGE
 function ShowDigilounge(show) {
@@ -381,8 +374,10 @@ function MenuUIListener(ev) {
             //show stationames
             document.getElementById("station-names").style.display = "none"
         }
+        if (stationIndex == 1) {
+            scene.getMeshByName("Collider Weather_C_P").isPickable=true
+        }
         if (stationIndex == 2) {
-            console.log("HOLA")
             ShowDigilounge(true)
         }
         else {

@@ -92,7 +92,7 @@ a:hover {
     position: absolute;
     width: 220px;
     height:30px;
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(255, 0, 0, 0);
     cursor: pointer;
     pointer-events: auto;
 }
@@ -164,7 +164,7 @@ a:hover {
 }
 
 .title-row {
-    background-color: rgba(235, 219, 0, 0.541);
+    background-color: rgba(235, 219, 0, 0.0);
     width: 95%;
     height: 20%;
 }
@@ -186,7 +186,7 @@ a:hover {
 
 .content-row {
     padding-top: 25px;
-    background-color: rgba(0, 255, 13, 0.76);
+    background-color: rgba(0, 255, 13, 0.0);
     width: 95%;
     display: grid;
     justify-content: center;
@@ -216,7 +216,7 @@ a:hover {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(163, 106, 255, 0.377);
+    background-color: rgba(163, 106, 255, 0.0);
     width: 35%;
     height: 100%;
 }

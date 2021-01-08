@@ -259,6 +259,18 @@ function feedWithCollider(elem, h, w, d, xOffset, yOffset, zOffset) {
     elemColl.material = colMat;
     elemColl.isPickable = true;
     ClickableObjects.push(elemColl)
+
+    elemColl.actionManager = new BABYLON.ActionManager(scene);
+	
+	//ON MOUSE ENTER
+	elemColl.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function(ev){	
+
+	}));
+	
+	//ON MOUSE EXIT
+	elemColl.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function(ev){
+
+	}));
 }
 
 
