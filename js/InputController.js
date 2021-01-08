@@ -58,13 +58,14 @@ document.addEventListener("pointerdown", event => {
     }
     //UI Button Click
     else if (event.target.classList.contains("menu-group")) {
-        if(event.target.children[0].id==""){
-            return
+        //handle kamera fahrt
+        if(event.target.classList.contains("hasCam")){
+            MenuUIListener(event)
+            toFirstQuestion()
         }
-        console.log(event.target.children[0].id)
-        MenuUIListener(event)
-        toFirstQuestion()
         handlePressedMenu(event)
+        //handle aufklappen
+
     }
     else if (event.target.classList.contains("station-names-text") || event.target.id == "sn-4") {
         if(event.target.id=="sn-5"){
@@ -144,6 +145,12 @@ function handlePressedMenu(ev){
     }
     else if(ev.target.classList.contains("p-2")){
         let children = document.getElementsByClassName("c-2")
+        for (let child of children){
+            child.classList.toggle("hidden-box")
+        }
+    }
+    else if(ev.target.classList.contains("p-3")){
+        let children = document.getElementsByClassName("c-3")
         for (let child of children){
             child.classList.toggle("hidden-box")
         }
@@ -269,6 +276,11 @@ function restartUI(index) {
             child.classList.add("hidden-box")
         }
 
+        let children3 = document.getElementsByClassName("c-3")
+        for (let child of children3){
+            child.classList.add("hidden-box")
+        }
+
         document.getElementById("sn-1").classList.add("hidden-box")
         document.getElementById("sn-0").classList.add("hidden-box")
         document.getElementById("sn-5").classList.remove("hidden-box")
@@ -362,7 +374,13 @@ function OverlayUIListener(elem_id) {
 
 
 function MenuUIListener(ev) {
-    let childElem = ev.target.children[0]
+    let childElem;
+    if(!ev.target.children[1]){
+        childElem = ev.target.children[0]
+    }
+    else{
+        childElem = ev.target.children[1]
+    }
 
 
     if (childElem.id.startsWith("go-")) {
