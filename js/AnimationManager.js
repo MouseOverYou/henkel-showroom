@@ -38,7 +38,7 @@ function travelCamToStation(i) {
 function travelCamToStation_sideEffects(i) {
     // SHOW UI After Camera Animation animating
     window.setTimeout(() => {
-        showStationNames(i)
+        restartUI(i)
     }, 1500)
 }
 

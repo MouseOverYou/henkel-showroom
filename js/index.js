@@ -34,6 +34,15 @@ var createScene = function () {
 
     }
 
+    scene.onPointerDown = function (evt, pickResult) {
+        // We try to pick an object
+        console.log(pickResult.pickedMesh.name)
+        if (pickResult.hit && pickResult.pickedMesh.name == "Collider Weather_C_P") {
+            console.log(pickResult.pickedMesh.name)
+            document.getElementsByClassName("layer1")[0].parentNode.classList.remove("close")
+        }
+    };
+
 
     return scene;
 };

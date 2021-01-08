@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
     <!-- gsap animationnn-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.2/gsap.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -39,42 +39,66 @@
         <div id="trueWidth" style="position: relative; user-select: auto; width: 300px; height: 100%; max-width: 200px; 
         min-width: 150px; min-height: 100%; box-sizing: border-box; background-color: #E1000F; ">
             <div id="header" style="text-align: center;display: block;">
-                <img id="logo-navbar" src="assets/ui/HENKEL_LogoFilled_Red_sRGB.png" style="padding-top:15%; height: 35%; width: 35%;">
+                <img id="logo-navbar" src="assets/ui/HENKEL_LogoFilled_Red_sRGB.png"
+                    style="padding-top:15%; height: 35%; width: 35%;">
             </div>
             <div id="menupoints">
-
-                <div class="menu-group" style="margin-top:120px">
-                    <p id="go-0" class="menupoint-text">DISPLAY SOLUTIONS</p>
+                <div class="menu-group" style="margin-top:60px">
+                    <p id="go-4" class="menupoint-text">LOBBY</p>
                 </div>
-                <div class="menu-group">
-                    <p id="go-1" class="menupoint-text">E-MOBILITY SOLUTIONS</p>
+                <div class="menu-group p-1">
+                    <p id="expo" class="menupoint-text">EXPO</p>
                 </div>
-                <div class="menu-group">
-                    <p id="go-2" class="menupoint-text">PRESENTATION + QUIZ</p>
+                <div class="menu-group c-1 hidden-box">
+                    <p id="go-0" class="menupoint-text sub">DISPLAY SOLUTIONS</p>
+                </div>
+                <div class="menu-group c-1 hidden-box">
+                    <p id="go-1" class="menupoint-text sub">E-MOBILITY SOLUTIONS</p>
+                </div>
+                <div class="menu-group p-2">
+                    <p id="go-2" class="menupoint-text">STAGE</p>
+                </div>
+                <div class="menu-group c-2 hidden-box">
+                    <p class="menupoint-text sub ">PRESENTATION</p>
+                </div>
+                <div class="menu-group c-2 hidden-box">
+                    <p class="menupoint-text sub ">QUIZ</p>
                 </div>
                 <div class="menu-group">
                     <p id="go-3" class="menupoint-text">MARKET SEGMENTS</p>
                 </div>
+                <div class="menu-group">
+                    <p class="menupoint-text">NETWORKING</p>
+                </div>
+                <div class="menu-group">
+                    <p class="menupoint-text sub">CHAT</p>
+                </div>
+                <div class="menu-group">
+                    <p class="menupoint-text sub">BREAKOUT ROOM</p>
+                </div>
+                <div class="menu-group">
+                    <p class="menupoint-text">MEDIA CENTER</p>
+                </div>
                 <div id="non-stations-group" style="position: fixed;
                 bottom: 0;">
-                    <div class="menu-group">
+                    <div class="menu-group" style="display: flex">
                         <div>
                             <img src="assets/ui/Agenda-Icon.png" class="menupoint-icon"></img>
                         </div>
                         <p class="menupoint-text">AGENDA</p>
                     </div>
-                    <div class="menu-group">
+                    <div class="menu-group" style="display: flex">
                         <div>
-                            <img src="assets/ui/Chats-Icon.png" class="menupoint-icon""></img>
+                            <img src="assets/ui/Chats-Icon.png" class="menupoint-icon"></img>
                         </div>
-                        <p class="menupoint-text">CHAT</p>
+                        <p class=" menupoint-text">CHAT</p>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-    <div style="display: flex; width: 100%; height: 100%;">
+    <div style="width: 100%; height: 100%;position: relative;">
         <div id="debugger">
             <p id='debugger-fps'>fps</p>
             <p id='debugger-text'>Nothing to select</p>
@@ -83,10 +107,95 @@
         </div>
 
         <div id="station-names">
-            <p id="sn-1" class="station-names-text" style="top:40%; left:30%">E-Mobility Solutions</p>
-            <p id="sn-0" class="station-names-text" style="top:75%; left:17%">Display Solutions</p>
-            <p id="sn-2" class="station-names-text" style="top:39%; left:51.2%">Presentation + Quiz</p>
-            <p id="sn-3" class="station-names-text" style="top:40%; left:70%">Market Segments</p-->
+            <p id="sn-5" class="station-names-text" style="top:38%; left:12%">Expo</p>
+            <p id="sn-1" class="station-names-text hidden-box" style="top:35%; left:22%">E-Mobility Solutions</p>
+            <p id="sn-0" class="station-names-text hidden-box" style="top:75%; left:8%">Display Solutions</p>
+            <p id="sn-2" class="station-names-text" style="top:39%; left:48%">Stage</p>
+            <p id="sn-3" class="station-names-text" style="top:47%; left:61%">Market Segments</p-->
+        </div>
+
+        <!--E-mobility Battery Pack Layer 1-->
+        <div class="overlay-blocker close">
+            <div id="software-overlay" class="emob-content layer1">
+                <div class="title-row">
+                    <div>
+                        <img class="content-nav-icon icon-close" style="left:94%" src="./assets/ui/Close.png">
+                    </div>
+                    <p class="content-title">BATTERY PACK</p>
+                </div>
+                <div class="content-row">
+                    <div class="img-box">
+                        <div class="ui-collider"></div>
+                        <img class="expo-img-part" src="./assets/ui/Battery.png"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--E-mobility Battery Pack Layer 2-->
+        <div class="overlay-blocker close">
+            <div class="emob-content layer2">
+                <div class="title-row">
+                    <div>
+                        <img class="content-nav-icon icon-back" style="left:0%" src="./assets/ui/Back.png">
+                        <img class="content-nav-icon icon-close" style="left:94%" src="./assets/ui/Close.png">
+                    </div>
+                    <p class="content-title">BATTERY PACK</p>
+                </div>
+                <div class="content-row" style="display: flex;">
+                    <div class="img-box">
+                        <img class="expo-img-part" src="./assets/ui/Battery-active.png"></img>
+                    </div>
+                    <div class="items-box">
+                        <div class="item-group">
+                            <p class="items-text">Animated Video of Gap Filler Applied to the Battery Module Plate</p>
+                            <button id="open-video" class="button">
+                                <div class="icon-button">
+                                    <img style="max-width: 12px;" src="./assets/ui/Video-Icon.png">
+                                </div>
+                                <p class="text-button">Open Video</p>
+                            </button>
+                        </div>
+                        <div class="item-group">
+                            <p class="items-text">Animated Video of Gap Filler Applied to the Battery Module Plate</p>
+                            <button class="button">
+                                <div class="icon-button">
+                                    <img style="max-width: 12px;" src="./assets/ui/Video-Icon.png">
+                                </div>
+                                <p class="text-button">Open Sell Sheet</p>
+                            </button>
+                        </div>
+                        <div class="item-group">
+                            <p class="items-text">Success Story for BERGQUIST TGF 3010APS: Silicone-Free, High-Volume
+                                Battery Thermal Management Solution</p>
+                            <button class="button">
+                                <div class="icon-button">
+                                    <img style="max-width: 12px;" src="./assets/ui/Video-Icon.png">
+                                </div>
+                                <p class="text-button">Open Sell Sheet</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--E-mobility Battery Pack Layer 3-->
+        <div class="overlay-blocker close">
+            <div class="emob-content layer3">
+                <div class="title-row">
+                    <div>
+                        <img class="content-nav-icon icon-close" style="left:94%" src="./assets/ui/Close.png">
+                    </div>
+                    <p class="content-title">BATTERY PACK</p>
+                </div>
+                <div id="software-video-content" class="video-content">
+                    <iframe id="video-software-holder" width="580" height="330"
+                        src="https://www.youtube.com/embed/azTPhsu2Kh4" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
 
         <!--Software Overlay-->
@@ -112,9 +221,11 @@
                         of tasks to suit different users.
                         This includes the detection of adverse weather conditions, tracking and probabilistic
                         short-term-forecasting, and generation and
-                        distribution of national mosaics/composites. Our software allows to process heterogeneous radar
+                        distribution of national mosaics/composites. Our software allows to process heterogeneous
+                        radar
                         networks (3rd party radars), to
-                        seamlessly integrate other sensor data (lidar, satellite, lightning, etc.), and to utilize dual
+                        seamlessly integrate other sensor data (lidar, satellite, lightning, etc.), and to utilize
+                        dual
                         polarization information in a
                         sophisticated manner.</p>
                 </div>
@@ -162,9 +273,11 @@
                     <p class="weather-title">State-of-the-art Weather Radar Technology</p>
                     <p class="weather-text">LEONARDO Germany GmbH provides highly accurate weather radars with
                         field-proven
-                        reliability. Our METEOR range of C-Band, S-Band and X-Band weather radars employs breakthrough
+                        reliability. Our METEOR range of C-Band, S-Band and X-Band weather radars employs
+                        breakthrough
                         technologies from the meteorology, signal processing and engineering sectors, as well as the
-                        semi-conductor and IT industries to deliver the best possible quantitative data. METEOR weather
+                        semi-conductor and IT industries to deliver the best possible quantitative data. METEOR
+                        weather
                         radars are available with magnetron or klystron transmitters and dual polarization.</p>
                 </div>
                 <div class="weather-row-imgs">
@@ -214,7 +327,8 @@
                 <a id="b-2-0" class="material-icons sm-80" style='right: 25px;'>undo</a>
                 <div class="windshear-row-text">
                     <p class="weather-title">ShearScout</p>
-                    <p class="weather-text">ShearScout® Sonic and ShearScout® 3D provide integrated solutions for wind
+                    <p class="weather-text">ShearScout® Sonic and ShearScout® 3D provide integrated solutions for
+                        wind
                         shear
                         detection and 3D weather monitoring at airports. Focus can be put on the aerodrome itself or
                         include
@@ -235,21 +349,27 @@
                 <a id="b-2-1" class="material-icons sm-80" style='right: 25px;'>undo</a>
                 <div class="windshear-row-text">
                     <p class="weather-title">LLWAS</p>
-                    <p class="weather-text">Leonardo’s low-level wind shear alert system (LLWAS) product is designed to
+                    <p class="weather-text">Leonardo’s low-level wind shear alert system (LLWAS) product is designed
+                        to
                         enhance the safety,
-                        regularity and efficiency of aviation in changing wind conditions based on ground wind sensors.
+                        regularity and efficiency of aviation in changing wind conditions based on ground wind
+                        sensors.
                         It
                         combines the latest
-                        UCAR Phase-3 LLWAS technology and Leonardo system expertise to detect low-level wind shear along
+                        UCAR Phase-3 LLWAS technology and Leonardo system expertise to detect low-level wind shear
+                        along
                         the
                         runway corridor
                         and issue timely warnings to ATC staff.<br>
-                        RainShear is Leonardo’s display software for LLWAS systems. Integration of wind data from LLWAS
+                        RainShear is Leonardo’s display software for LLWAS systems. Integration of wind data from
+                        LLWAS
                         with
                         complementary
-                        wind sensors such as weather radar and lidar provides airports with a complete wind shear alert
+                        wind sensors such as weather radar and lidar provides airports with a complete wind shear
+                        alert
                         solution.<br>
-                        LLWAS is available as a stand-alone product or as part of an integrated solution for wind shear
+                        LLWAS is available as a stand-alone product or as part of an integrated solution for wind
+                        shear
                         detection.
                     </p>
                 </div>
@@ -261,26 +381,32 @@
             <div id="lidar-overlay" class="station-content close">
                 <div class="weather-row-text">
                     <p class="weather-title">Lidar and Windshear Detection</p>
-                    <p class="weather-text">Wind shear is a change in wind speed and/or direction over a short distance.
+                    <p class="weather-text">Wind shear is a change in wind speed and/or direction over a short
+                        distance.
                         In
                         aviation,
                         low-level wind shear and microbursts pose a serious threat to aircraft during take-off and
                         landing.
                         Today,
                         there are two main types of wind shear alert systems on the market.<br>
-                        The ground-based LLWAS (Low-Level Wind Shear Alert System) use data from anemometers installed
+                        The ground-based LLWAS (Low-Level Wind Shear Alert System) use data from anemometers
+                        installed
                         within and around the aerodrome.
-                        The data is processed via a sophisticated LLWAS algorithm to calculate the resulting wind shear
+                        The data is processed via a sophisticated LLWAS algorithm to calculate the resulting wind
+                        shear
                         and
                         to derive the alerts.
                         Different software packages allow convenient control of the LLWAS system and user-friendly
                         display
                         of wind shear alerts.<br>
-                        Wind shear can also be detected via a weather radar and a scanning Doppler-lidar. When combined,
+                        Wind shear can also be detected via a weather radar and a scanning Doppler-lidar. When
+                        combined,
                         both sensors make up an
-                        all-weather wind shear detection system. The lidar system provides wind data in no-rain weather
+                        all-weather wind shear detection system. The lidar system provides wind data in no-rain
+                        weather
                         situations while the weather
-                        radar performs best in the presence of rain. Dedicated software packages process data from both
+                        radar performs best in the presence of rain. Dedicated software packages process data from
+                        both
                         systems, combine wind shear
                         information and display alerts.</p>
                 </div>
@@ -384,7 +510,8 @@
                             have
                             changed
                             noticeably worldwide.
-                            Meteorological phenomena like hurricanes, tornadoes, hailstorm, lightning, frost, but also
+                            Meteorological phenomena like hurricanes, tornadoes, hailstorm, lightning, frost, but
+                            also
                             droughts and fires
                             are appearing more frequently and more violently.</p>
                     </div>
@@ -392,7 +519,8 @@
                 <div class="img-text-block mobile-flip">
                     <div class="solution-text-box">
                         <div class="line-around-text content-left"></div>
-                        <p class="solution-text content-left">Meteorological information cannot preclude the impact of
+                        <p class="solution-text content-left">Meteorological information cannot preclude the impact
+                            of
                             adverse weather
                             phenomena, but it can
                             help to timely detect the formation of the phenomena and contribute to mitigate the most
@@ -427,11 +555,13 @@
                     </div>
                     <div class="solution-text-box">
                         <div class="line-around-text content-right"></div>
-                        <p class="solution-text content-right">With a recognized role as technology leader in Weather
+                        <p class="solution-text content-right">With a recognized role as technology leader in
+                            Weather
                             Radar
                             Systems and
                             our expertise in providing turnkey
-                            meteorological sensoring networks, we offer a broad portfolio of leading-edge meteorological
+                            meteorological sensoring networks, we offer a broad portfolio of leading-edge
+                            meteorological
                             sensors and software solutions to
                             suit the individual needs of our customers..</p>
                     </div>
@@ -439,7 +569,8 @@
                 <div class="img-text-block mobile-flip">
                     <div class="solution-text-box ">
                         <div class="line-around-text content-left"></div>
-                        <p class="solution-text content-left">Meteorological information cannot preclude the impact of
+                        <p class="solution-text content-left">Meteorological information cannot preclude the impact
+                            of
                             adverse weather
                             phenomena, but it can
                             help to timely detect the formation of the phenomena and contribute to mitigate the most
@@ -634,7 +765,8 @@
                     </div>
                     <div class="solution-text-box">
                         <div class="line-around-text content-right"></div>
-                        <p class="solution-text content-right">We ensure the highest value possible for our products and
+                        <p class="solution-text content-right">We ensure the highest value possible for our products
+                            and
                             systems and the best assistance through an extended portfolio of engineering and
                             technical services. Our Customer Service, through an integrated team of engineers
                             and technicians of different areas, is available to timely and effectively respond
@@ -644,7 +776,8 @@
                 <div class="img-text-block mobile-flip">
                     <div class="solution-text-box">
                         <div class="line-around-text content-left"></div>
-                        <p class="solution-text content-left">Our experienced service engineers and product specialists
+                        <p class="solution-text content-left">Our experienced service engineers and product
+                            specialists
                             provide
                             expert technical assistance via remote communication media or onsite, offering helpdesk
                             support, repair services, preventive maintenance, spare-part management and on-demand
@@ -729,7 +862,8 @@
                     <p class="weather-title">Contact & Meet</p>
                     <p>Please feel free to leave a comment or request:</p>
                     <a class="weather-text"
-                        href="mailto:exhibitionguests@leonardogermany.com">exhibitionguests@leonardogermany.com</a> <br>
+                        href="mailto:exhibitionguests@leonardogermany.com">exhibitionguests@leonardogermany.com</a>
+                    <br>
                     <br>
                     <p>For general information or product related inquiries, you may also address:</p>
                     <a class="weather-text" href="mailto:info@leonardogermany.com">info@leonardogermany.com</a> <br>
@@ -777,7 +911,8 @@
                 <div class="text-progress">0%</div>
             </div>
             <div class="container progress">
-                <p class="text-note"><strong>Note:</strong> The virtual stand may only be browsed using Chrome, Edge,
+                <p class="text-note"><strong>Note:</strong> The virtual stand may only be browsed using Chrome,
+                    Edge,
                     Firefox or Safari</p>
             </div>
 

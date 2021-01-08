@@ -105,7 +105,7 @@ function LoadAssets(scene, assetsManager) {
         console.log(middleCanvas)
         let iconSize = document.getElementById("sn-4").width
         console.log(iconSize)
-        let middleDistance = (middleCanvas + barWidth - iconSize/2).toString() + "px"
+        let middleDistance = (middleCanvas - iconSize/2).toString() + "px"
         console.log(middleDistance)
         document.getElementById("sn-4").style.left= middleDistance 
     }
@@ -134,13 +134,13 @@ function AccessModelsForFunctionality() {
             elem.isVisible = false;
         }
         // models seing be raycast
-        else if (elem.name.startsWith("p_")) {
-            if (elem.name == "p_cubeMain") {
-                feedWithCollider(elem, 20, 20, 15, 17)
-            }
-            else
-                feedWithCollider(elem, 80, 40, 80, 0)
-        }
+        // else if (elem.name.startsWith("p_")) {
+        //     if (elem.name == "p_cubeMain") {
+        //         //feedWithCollider(elem, 20, 20, 15, 17)
+        //     }
+        //     else
+        //         //feedWithCollider(elem, 80, 40, 80, 0)
+        // }
         //disable original non baked objects
         else if (elem.name.startsWith("or_")) {
             elem.isVisible = false
@@ -151,7 +151,7 @@ function AccessModelsForFunctionality() {
             Weather_DISPLAY_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
             Weather_DISPLAY_P.position.y = 12
             Weather_DISPLAY_P.rotation.y = 230 * (Math.PI / 180)
-            feedWithCollider(Weather_DISPLAY_P, 100, 100, 25, 0, 25, 0)
+            //feedWithCollider(Weather_DISPLAY_P, 100, 100, 25, 0, 25, 0)
         }
         //weather c
         else if (elem.name.startsWith("P_2")) {
@@ -171,7 +171,7 @@ function AccessModelsForFunctionality() {
             Weather_X_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
             Weather_X_P.position.y = 12
             Weather_X_P.rotation.y = -45 * (Math.PI / 180)
-            feedWithCollider(Weather_X_P, 100, 100, 25, 0, 25, 0)
+            //feedWithCollider(Weather_X_P, 100, 100, 25, 0, 25, 0)
         }
         //weather s
         else if (elem.name.startsWith("P_4")) {
@@ -181,7 +181,7 @@ function AccessModelsForFunctionality() {
             Weather_S_P.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
             Weather_S_P.position.y = 12
             Weather_S_P.rotation.y = 230 * (Math.PI / 180)
-            feedWithCollider(Weather_S_P, 100, 100, 25, 0, 25, 0)
+            //feedWithCollider(Weather_S_P, 100, 100, 25, 0, 25, 0)
         }
 
         // radar discover
@@ -213,7 +213,7 @@ function AccessModelsForFunctionality() {
         }
         else if (elem.name == "Pdf Cloner") {
             elem.getChildren().forEach(mesh => {
-                feedWithCollider(mesh, 6, 0.1, 20, 0, 0, 0)
+                //feedWithCollider(mesh, 6, 0.1, 20, 0, 0, 0)
             })
         }
         else if (elem.name == "Station Anchors") {
@@ -241,7 +241,7 @@ function AccessModelsForFunctionality() {
                             let indexElem = parseInt(n)
                             let elemID = "go-" + indexElem
                             console.log(indexElem)
-                            handleUISelection(document.getElementById(elemID), parseInt(n))
+                            //handleUISelection(document.getElementById(elemID), parseInt(n))
                             //Handle Weather Controls automatically
                             //showMenuControl(indexElem)
                         } 

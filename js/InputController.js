@@ -20,13 +20,33 @@ document.addEventListener("pointerdown", event => {
         return
     }
 
-    if (event.target.id=="quiz-screen") {
+    if (event.target.id == "quiz-screen") {
         toNextQuestion();
     }
 
     //INTERACT ONE TIME TO PLAY VIDEO ON SCREEN
-    if(logo_anim_vid.video.paused){
+    if (logo_anim_vid.video.paused) {
         logo_anim_vid.video.play();
+    }
+
+    //X CLOSE ICON PRESSED
+    if (event.target.classList.contains("icon-close")) {
+        CloseParentOverlay(event)
+    }
+
+    //X CLOSE ICON PRESSED
+    if (event.target.classList.contains("icon-back")) {
+        document.getElementsByClassName("layer1")[0].parentNode.classList.remove("close")
+        document.getElementsByClassName("layer2")[0].parentNode.classList.add("close")
+    }
+    if(event.target.id=="open-video"){
+        document.getElementsByClassName("layer2")[0].parentNode.classList.add("close")
+        document.getElementsByClassName("layer3")[0].parentNode.classList.remove("close")
+    }
+
+    if(event.target.classList.contains("ui-collider")){
+        document.getElementsByClassName("layer1")[0].parentNode.classList.add("close")
+        document.getElementsByClassName("layer2")[0].parentNode.classList.remove("close")
     }
 
     console.log(event.target)
@@ -36,14 +56,29 @@ document.addEventListener("pointerdown", event => {
     }
     //UI Button Click
     else if (event.target.classList.contains("menu-group")) {
+        if(event.target.children[0].id==""){
+            return
+        }
         console.log(event.target.children[0].id)
         MenuUIListener(event)
         toFirstQuestion()
+        handlePressedMenu(event)
     }
-    else if (event.target.classList.contains("station-names-text") || event.target.id=="sn-4") {
+    else if (event.target.classList.contains("station-names-text") || event.target.id == "sn-4") {
+        if(event.target.id=="sn-5"){
+            document.getElementById("sn-1").classList.toggle("hidden-box")
+            document.getElementById("sn-0").classList.toggle("hidden-box")
+            event.target.classList.toggle("hidden-box")
+            let children = document.getElementsByClassName("c-1")
+            for (let child of children){
+                child.classList.toggle("hidden-box")
+            }
+            return
+        }
         console.log(event.target.id)
         StationNameCliked(event)
         toFirstQuestion()
+
     }
     //Stations UI Button Click
     else if (stationsUIBtn.includes(event.target.id)) {
@@ -92,7 +127,33 @@ document.addEventListener("pointerdown", event => {
     }
 })
 
+function handleParentStickers(ev){
+    
+}
+function handlePressedMenu(ev){
+    if(ev.target.classList.contains("p-1")){
+        let children = document.getElementsByClassName("c-1")
+        for (let child of children){
+            child.classList.toggle("hidden-box")
+        }
+        document.getElementById("sn-1").classList.toggle("hidden-box")
+        document.getElementById("sn-0").classList.toggle("hidden-box")
+        document.getElementById("sn-5").classList.toggle("hidden-box")
+    }
+    else if(ev.target.classList.contains("p-2")){
+        let children = document.getElementsByClassName("c-2")
+        for (let child of children){
+            child.classList.toggle("hidden-box")
+        }
+    }
+}
+
+function CloseParentOverlay(ev){
+    let papa = ev.target.parentNode.parentNode.parentNode.parentNode
+    papa.classList.add("close")
+}
 function StationNameCliked(ev) {
+
 
     let childElem = ev.target
     document.getElementById("station-names").style.display = "none"
@@ -100,12 +161,12 @@ function StationNameCliked(ev) {
         let stationIndex = parseInt(childElem.id.charAt(3))
         //handleUISelection(childElem, stationIndex)
         travelCamToStation(stationIndex)
-        if(stationIndex==2){
+        if (stationIndex == 2) {
             ShowDigilounge(true)
         }
-        else{
+        else {
             ShowDigilounge(false)
-        }    
+        }
     }
 }
 // OVERLAY UI Solutions
@@ -187,13 +248,27 @@ function setSoftwareVideo(i, j) {
 
 let menuStationsDict = { 0: "computer", 1: "mediation", 2: "toys", 3: "home_repair_service", 4: "contact_page", 5: "school", 6: "toys" }
 //HANDLE STATION NAMES VISIBILITY
-function showStationNames(index) {
+function restartUI(index) {
 
     //HANDLE STATION NAMES VISIBILITY
     if (index == 4) {
         //show stationames
         document.getElementById("station-names").style.display = "initial"
+
+        let children1 = document.getElementsByClassName("c-1")
+        for (let child of children1){
+            child.classList.add("hidden-box")
+        }
+        let children2 = document.getElementsByClassName("c-2")
+        for (let child of children2){
+            child.classList.add("hidden-box")
+        }
+
+        document.getElementById("sn-1").classList.add("hidden-box")
+        document.getElementById("sn-0").classList.add("hidden-box")
+        document.getElementById("sn-5").classList.remove("hidden-box")
     }
+
 }
 
 function hideMenuControl() {
@@ -217,14 +292,14 @@ function handleWindshear(i) {
 }
 
 // SHOW DIGILOUNGE
-function ShowDigilounge(show){
-    if(show){
+function ShowDigilounge(show) {
+    if (show) {
         window.setTimeout(() => {
             document.getElementById("howto-overlay").classList.remove("close")
         }, 1500)
-        
+
     }
-    else{
+    else {
         document.getElementById("howto-overlay").classList.add("close")
     }
 }
@@ -306,13 +381,13 @@ function MenuUIListener(ev) {
             //show stationames
             document.getElementById("station-names").style.display = "none"
         }
-        if(stationIndex==2){
+        if (stationIndex == 2) {
             console.log("HOLA")
             ShowDigilounge(true)
         }
-        else{
+        else {
             ShowDigilounge(false)
-        }    
+        }
 
     }
 }
