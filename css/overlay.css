@@ -28,6 +28,9 @@ a:hover {
     font-weight: 800;
 }
 
+#quiz-screen{
+    width:100%;
+}
 /* Images */
 .expo-img-part {
     width:380px
