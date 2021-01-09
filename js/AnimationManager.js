@@ -15,6 +15,8 @@ function jumpCamTo(i) {
 let CamTween = gsap.timeline({ onComplete: zCamReset });
 let isAnimatingCam = false
 function travelCamToStation(i) {
+    currentStation = i;
+    console.log("CURRENT STATION IS" + i)
     isAnimatingCam = true
     //handle Z depth crossing mesh
     walkerCam.minZ = 15

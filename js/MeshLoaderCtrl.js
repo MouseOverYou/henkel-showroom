@@ -2,6 +2,7 @@ let Showroom, ShowroomLoaderTask, CloudsTask
 let Weather_C_ProductsTask, Weather_X_ProductsTask, Weather_S_ProductsTask, Weather_C_P, Weather_X_P, Weather_DISPLAY_P, 
     plane_1, plane_2, plane_3, plane_4
 
+
 function LoadAssets(scene, assetsManager) {
     //Weather S
     Weather_S_P = new BABYLON.TransformNode("Weather_S_P");
@@ -94,8 +95,8 @@ function LoadAssets(scene, assetsManager) {
 
     var pbr
     assetsManager.onFinish = function (task) {
-        ChangeMaterialProperties()
         CreateCustomMaterials()
+        ChangeMaterialProperties()
         AccessModelsForFunctionality()
         AddGlow()
         HandleWebglSetup()
@@ -107,7 +108,8 @@ function LoadAssets(scene, assetsManager) {
         console.log(iconSize)
         let middleDistance = (middleCanvas - iconSize/2).toString() + "px"
         console.log(middleDistance)
-        document.getElementById("sn-4").style.left= middleDistance 
+        document.getElementById("sn-4").style.left= middleDistance
+        disableAllColliders();
     }
     //Asset Manager check
     assetsManager.onProgress = function (remainingCount, totalCount, lastFinishedTask) {
@@ -124,7 +126,6 @@ let ClickableObjects = [];
 const AnchorPosition = []
 const AnchorLookAt = []
 let Ref_Middle_P, MiddleProduct
-
 function AccessModelsForFunctionality() {
     // By  Mesh
     scene.meshes.forEach(elem => {
@@ -133,14 +134,6 @@ function AccessModelsForFunctionality() {
             elem.checkCollisions = true;
             elem.isVisible = false;
         }
-        // models seing be raycast
-        // else if (elem.name.startsWith("p_")) {
-        //     if (elem.name == "p_cubeMain") {
-        //         //feedWithCollider(elem, 20, 20, 15, 17)
-        //     }
-        //     else
-        //         //feedWithCollider(elem, 80, 40, 80, 0)
-        // }
         //disable original non baked objects
         else if (elem.name.startsWith("or_")) {
             elem.isVisible = false
@@ -192,8 +185,12 @@ function AccessModelsForFunctionality() {
             elem.rotation.z = 0 * (Math.PI / 180)
             DiscoverMeshes.push(elem)
         }
-        else if(elem.name == "Letter o"){
-            //feedWithCollider(elem, 10, 15, 12, -2, 0, 4)
+        //screen colliders
+        else if (elem.name.startsWith("ms")){
+            elem.material = colMat;
+            let num = elem.name.slice(-1)
+            num = parseInt(num)
+            MouseOverAble(elem, num)
         }
 
 
@@ -273,6 +270,24 @@ function feedWithCollider(elem, h, w, d, xOffset, yOffset, zOffset) {
 	}));
 }
 
+
+function MouseOverAble(mesh, num){
+    mesh.isPickable = true;
+    mesh.actionManager = new BABYLON.ActionManager(scene);
+	
+	//ON MOUSE ENTER
+	mesh.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function(ev){	
+        screenMat.emissiveTexture = ScreenHighlights[num]
+        console.log("entered to " + mesh.name)
+        console.log(screenMat.emissiveTexture.name)
+	}));
+	
+	//ON MOUSE EXIT
+	mesh.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function(ev){
+        screenMat.emissiveTexture = ScreenHighlights[0]
+        console.log("out of " + mesh.name)
+	}));
+}
 
 
 

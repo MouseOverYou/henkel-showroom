@@ -6,6 +6,7 @@ document.addEventListener("keydown", event => {
     }
 })
 
+let currentStation = 4;
 let band = "C" // init value
 let stationsUIBtn = ["to-overlay", "video-btn",
     "x-0", "x-1", "x-1-r", "x-2", "x-3", "x-4", "x-5",
@@ -62,6 +63,7 @@ document.addEventListener("pointerdown", event => {
         if(event.target.classList.contains("hasCam")){
             MenuUIListener(event)
             toFirstQuestion()
+
         }
         handlePressedMenu(event)
         //handle aufklappen
@@ -94,31 +96,6 @@ document.addEventListener("pointerdown", event => {
         UISolutionPressed(index)
     }
 
-    // Process GameObject Tap Interaction
-    // else if (walkerSelection.startsWith("Collider PdfBORRAME") && event.target.id == "renderCanvas") {
-    //     document.exitPointerLock();
-    //     let ColliderIndex = 13
-    //     let i = walkerSelection.charAt(ColliderIndex)
-
-    //     document.getElementsByClassName("overlay-content")[3].classList.toggle("close")
-    //     document.getElementsByClassName("station-content")[3].classList.toggle("close")
-    //     UISolutionPressed(i)
-    //     // if (!iOS()) {
-    //     //     document.getElementById("download-" + i).click()
-    //     // }
-    // }
-
-    // else if (walkerSelection.startsWith("Collider Letter o") && scene.activeCamera == walkerCam && !iOS() && !isMobileDevice()) {
-    //     // document.exitPointerLock();
-    //     // document.getElementsByClassName("overlay-content")[2].classList.toggle("close")
-    //     // document.getElementsByClassName("station-content")[2].classList.toggle("close")
-    // }
-
-    // else if (walkerSelection.startsWith("Collider Weather_") && scene.activeCamera == walkerCam && !iOS() && !isMobileDevice()) {
-    //     let ColliderIndex = 17
-    //     band = walkerSelection.charAt(ColliderIndex)
-    //     //setRadarSelection(band)
-    // }
     else if (event.target.id == "impressum-btn") {
         document.getElementsByClassName("impressumArea")[0].classList.toggle("close")
     }
@@ -235,27 +212,11 @@ function closeOverlay_sideEffects(index) {
     if (index != 5 && index != 2)
         travelCamToStation(index)
 }
-let radar_video = ["https://www.youtube.com/embed/hsPmxislGSQ", "https://www.youtube.com/embed/kz1InmmkZ0s", "https://www.youtube.com/embed/7QbX8IYmwFU"]
-function setRadarVideo() {
-    let index = BandToIndex(band)
-    document.getElementById("video-radar-holder").src = radar_video[index]
-}
 
 let radar_pdf = ["downloadables/c_radar_datenblatt.pdf", "downloadables/x_radar_datenblatt.pdf", "downloadables/s_radar_datenblatt.pdf"]
 function openRadarPdf() {
     let index = BandToIndex(band)
     window.open(radar_pdf[index], "_blank")
-}
-
-let software_video = [["https://www.youtube.com/embed/azTPhsu2Kh4", "https://www.youtube.com/embed/6VQ4VLy3tuA", "https://www.youtube.com/embed/R1ju-OTqOW8"], ["https://www.youtube.com/embed/2P43K3QcJt0"]]
-function setSoftwareVideo(i, j) {
-    document.getElementById("video-software-holder").src = software_video[i][j]
-    if (i == 1 && j == 0) {
-        document.getElementById("software-video-options").classList.add("close")
-    }
-    else {
-        document.getElementById("software-video-options").classList.remove("close")
-    }
 }
 
 let menuStationsDict = { 0: "computer", 1: "mediation", 2: "toys", 3: "home_repair_service", 4: "contact_page", 5: "school", 6: "toys" }
@@ -285,11 +246,36 @@ function restartUI(index) {
         document.getElementById("sn-0").classList.add("hidden-box")
         document.getElementById("sn-5").classList.remove("hidden-box")
 
-        scene.getMeshByName("Collider Weather_C_P").isPickable=false
+        disableAllColliders();
+    }
+    else{
+        enableCollidersOnStation(index)
     }
 
 }
-
+let StationColliders
+function enableCollidersOnStation(index){
+    if(index != 1 && index != 3){
+        return;
+    }
+    if(index == 1){
+        scene.getMeshByName("Collider Weather_C_P").isPickable=true
+    }
+    else if(index == 3){
+        scene.getMeshByName("ms_1").isPickable=true
+        scene.getMeshByName("ms_2").isPickable=true
+        scene.getMeshByName("ms_3").isPickable=true
+        scene.getMeshByName("ms_4").isPickable=true
+    }
+}
+function disableAllColliders(){
+    scene.getMeshByName("Collider Weather_C_P").isPickable=false
+    scene.getMeshByName("ms_1").isPickable=false
+    scene.getMeshByName("ms_2").isPickable=false
+    scene.getMeshByName("ms_3").isPickable=false
+    scene.getMeshByName("ms_4").isPickable=false
+    
+}
 function hideMenuControl() {
     document.getElementsByClassName("overlay-weather-btns")[0].classList.add("close")
     document.getElementById("to-overlay").innerHTML = ""
@@ -306,69 +292,6 @@ function ShowDigilounge(show) {
     }
     else {
         document.getElementById("howto-overlay").classList.add("close")
-    }
-}
-
-// MAIN LISTENERS
-function OverlayUIListener(elem_id) {
-    let icon = document.getElementById("to-overlay").innerHTML;
-    // SET RIGHT ICON FOR STATIONS
-    if (elem_id == "to-overlay") {
-        let index = getKeyByValue(menuStationsDict, icon)
-        //click on index 6, open index 2
-        if (index == 6) {
-            index = 2
-        }
-        document.getElementsByClassName("overlay-content")[index].classList.toggle("close")
-        document.getElementsByClassName("station-content")[index].classList.toggle("close")
-    }
-    else if (elem_id == "video-btn") {
-        document.getElementsByClassName("overlay-content")[1].classList.toggle("close")
-        document.getElementsByClassName("video-content")[1].classList.toggle("close")
-    }
-    else if (elem_id.startsWith("soft-vid-btn-")) {
-        document.getElementsByClassName("station-content")[0].classList.toggle("close")
-        document.getElementsByClassName("video-content")[0].classList.toggle("close")
-        let index = parseInt(elem_id.charAt(13))
-        setSoftwareVideo(index, 0)
-    }
-    else if (elem_id == "lidar-vid-btn-0") {
-        document.getElementsByClassName("station-content")[2].classList.toggle("close")
-        document.getElementsByClassName("video-content")[2].classList.toggle("close")
-    }
-    else if (elem_id.startsWith("x-")) {
-
-        let station = parseInt(elem_id.charAt(2))
-
-        if (elem_id.charAt(4) == "r") {
-            if (scene.activeCamera == rotateCam) {
-                ToWalkerMode()
-            }
-            closeOverlays(1, true)
-            return
-        }
-
-        closeOverlays(station, true)
-    }
-    else if (elem_id.startsWith("b-")) {
-
-        let station = parseInt(elem_id.charAt(2))
-        document.getElementsByClassName("station-content")[station].classList.toggle("close")
-        console.log(elem_id.length)
-        if (elem_id.length == 3) {
-            document.getElementsByClassName("video-content")[station].classList.toggle("close")
-        }
-        else {
-            console.log(station)
-            let subStation = elem_id.charAt(4)
-            if (station == 2) {
-                document.getElementById("windshear-" + subStation).classList.toggle("close")
-            }
-
-            else if (station == 3) {
-                document.getElementById("solution-content-" + subStation).classList.toggle("close")
-            }
-        }
     }
 }
 
@@ -395,12 +318,16 @@ function MenuUIListener(ev) {
         if (stationIndex == 1) {
             scene.getMeshByName("Collider Weather_C_P").isPickable=true
         }
+        if(stationIndex != 3 && getComputedStyle(document.getElementById("overlay-ms"), null).display !="none" ){
+            document.getElementById("overlay-ms").classList.add("close")
+        }
         if (stationIndex == 2) {
             ShowDigilounge(true)
         }
         else {
             ShowDigilounge(false)
         }
+
 
     }
 }

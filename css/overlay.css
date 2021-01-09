@@ -121,6 +121,10 @@ a:hover {
     width: 644px;
     height: 476px;
 }
+
+.layer-ms{
+    width: 511px;
+}
 #presentation-content {
     display: flex;
     background-color: white;
@@ -190,6 +194,14 @@ a:hover {
     width: 95%;
     display: grid;
     justify-content: center;
+}
+.content-row-ms {
+    padding-top: 25px;
+    padding-left: 0px;
+
+    background-color: rgba(0, 255, 13, 0.0);
+    width: 441px;
+    display: block;
 }
 
 .no-overflow {

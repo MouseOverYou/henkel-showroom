@@ -7,6 +7,9 @@ let Radar_C_Mats = []
 let Radar_X_Mats = []
 let Radar_S_Mats = []
 let logo_anim_vid;
+let screenMat;
+let blackText, ms1Text, ms2Text, ms3Text, ms4Text;
+let ScreenHighlights=[];
 function ChangeMaterialProperties() {
 
     Radar_Mats.push(Radar_C_Mats,Radar_X_Mats, Radar_S_Mats)
@@ -16,11 +19,21 @@ function ChangeMaterialProperties() {
     Radar_S_Mats.push("SGroup")
 
     logo_anim_vid = CreateVideoTexture("logo_anim_vid", "./assets/UV_Screen_03.mp4")
+    blackText = new BABYLON.Texture("./assets/full_black.jpg", scene)
+    ScreenHighlights[0] = blackText
+    ms1Text = new BABYLON.Texture("./assets/ms highlight 3.jpg", scene)
+    ScreenHighlights[1] = ms1Text
+    ms2Text = new BABYLON.Texture("./assets/ms highlight 4.jpg", scene)
+    ScreenHighlights[2] = ms2Text
+    ms3Text = new BABYLON.Texture("./assets/ms highlight 1.jpg", scene)
+    ScreenHighlights[3] = ms3Text
+    ms4Text = new BABYLON.Texture("./assets/ms highlight 2.jpg", scene)
+    ScreenHighlights[4] = ms4Text
     
     var redLeo = new BABYLON.Color3.FromHexString("#FF0000");
     var blueBay = new BABYLON.Color3.FromHexString("#063c9d");
     var lightGrayBay = new BABYLON.Color3.FromHexString("#eeeeee");
-    var darkGrayBay = new BABYLON.Color3.FromHexString("#323334");
+    var darkGrayBay = new BABYLON.Color3.FromHexString("#909090");
     var blackBay = new BABYLON.Color3.FromHexString("#000000");
 
     var GrayLight = new BABYLON.Color3.FromHexString("#FFFFFF");
@@ -68,6 +81,11 @@ function ChangeMaterialProperties() {
             mat.albedoColor = redLeo
             mat.emissiveColor = new BABYLON.Color3.FromHexString("#ff0000")
             mat.roughness = 0.25
+        }
+        else if(mat.name == "Market Segments Mats"){
+            mat.emissiveColor = darkGrayBay;
+            mat.emissiveTexture = blackText;
+            screenMat = mat;
         }
 
         else if(mat.name == "Screen Texture"){
@@ -134,8 +152,6 @@ function CreateCustomMaterials() {
     plane_1_mat.opacityTexture = plane_1_text
     plane_1.material = plane_1_mat
     plane_1.material.unlit = true
-
-
 
     let plane_2_text = new BABYLON.Texture("./assets/em power conversion.png", scene)
     let plane_2_mat = new BABYLON.PBRMaterial("plane_2_mat", scene)
