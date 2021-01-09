@@ -1,5 +1,5 @@
 :root {
-    --leo-red-color: rgb(236, 9, 40);
+    --leo-red-color: #E1000F;
     --henkel-gray-color: #5F6973;
 }
 
@@ -50,7 +50,8 @@ a:hover {
 }
 
 /* Weather Main Overlay*/
-.agenda-content{
+#agenda{
+    z-index: 1;
 }
 
 .agenda-row{
@@ -102,6 +103,8 @@ a:hover {
     justify-content: center;
 
 }
+
+
 .rechteck{
     width: 500px;
     height:600px;
@@ -158,6 +161,20 @@ a:hover {
 
 .layer-agenda{
     width: 400px;
+}
+
+.layer-chat{
+    width: 200px;
+    position: relative;
+    background-color: var(--leo-red-color);
+    right:25px;
+}
+
+.overlay-chat {
+    position: fixed; 
+    right:  0%;
+    bottom: 0%;
+    z-index: 2;
 }
 #presentation-content {
     display: flex;
@@ -222,6 +239,10 @@ a:hover {
     padding-left: 20px;
 }
 
+.content-title.red{
+    color: #ffffff;
+}
+
 .content-row {
     padding-top: 25px;
     background-color: rgba(0, 255, 13, 0.0);
@@ -238,6 +259,8 @@ a:hover {
     display: block;
 }
 
+.chat-content{
+}
 .agenda-content{
     padding-top: 25px;
     padding-left: 30px;

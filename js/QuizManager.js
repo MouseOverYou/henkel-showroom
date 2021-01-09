@@ -44,3 +44,7 @@ async function agendaClick(){
     }
     await document.getElementById("agenda").classList.toggle("close");
 }
+
+function chatClick(){
+    document.getElementById("chat").classList.toggle("close");
+}
