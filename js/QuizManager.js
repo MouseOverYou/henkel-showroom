@@ -31,3 +31,16 @@ let MarketSegmentsDict = {
     "ms_4": ["EXTERIOR, POWERTRAIN, INTERIOR, CHASSIS", "Since many years Henkel serves companies that produce Exterior, Interior, Powertrain and Chassis Components. We offer solutions for assembly, sealing and protection of parts like headlamps, combustion engines or liftgates. This enables component manufacturers to respond to increasing requirements such as joining of dissimilar plastics, porosity sealing or protection against oils and coolants in the engine compartment.", "./assets/ui/epic icon.png"],
     "ms_3": ["SURFACE TREATMENT, CLEANERS & LUBRICANTS", "Henkel Automotive Components offers surface treatments, cleaners and lubricants for the metal processing industry. This includes innovative die casting and forging lubricants, water-based machining and grinding fluids, neutral cleaners, as well as pretreatment solutions for steel, galvanized and light metal substrates. Our deep technology know-how along the whole value chain enables us to provide the best possible processes solutions to our customers.", "./assets/ui/stcl icon.png"]
 }
+
+
+async function agendaClick(){
+    //close overlay blcoker
+    let overlays = document.getElementsByClassName("overlay-blocker");
+    for(let ov of overlays){
+        if(ov.id=="agenda"){
+            continue;
+        }
+        ov.classList.add("close")
+    }
+    await document.getElementById("agenda").classList.toggle("close");
+}

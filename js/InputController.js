@@ -60,6 +60,9 @@ document.addEventListener("pointerdown", event => {
     //UI Button Click
     else if (event.target.classList.contains("menu-group")) {
         //handle kamera fahrt
+        if(event.target.id=="agenda-btn" || event.target.id=="chat-btn"){
+            return;
+        }
         if(event.target.classList.contains("hasCam")){
             MenuUIListener(event)
             toFirstQuestion()

@@ -1,10 +1,11 @@
 :root {
     --leo-red-color: rgb(236, 9, 40);
-    --leo-gray-color: rgb(0, 0, 0);
+    --henkel-gray-color: #5F6973;
 }
 
 p, a {
         font-family: 'Open Sans', sans-serif;
+        color: #5F6973;
         /*avoid text Highlioghting*/
         pointer-events: none;
         cursor: none;
@@ -49,6 +50,35 @@ a:hover {
 }
 
 /* Weather Main Overlay*/
+.agenda-content{
+}
+
+.agenda-row{
+    display: flex;
+}
+.agenda-date{
+    display:flex;
+}
+
+.agenda-text{
+    font-size: 10px;
+    margin-bottom: 10px;
+    padding-left: 50px;
+    
+}
+.agenda-line{
+    width: 330px;
+    height: 1px;
+    background-color: var(--henkel-gray-color);
+    opacity:0.5;
+}
+
+.agenda-date{
+    font-size: 10px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+
+}
 
 .overlay-content {
     position: absolute;
@@ -124,6 +154,10 @@ a:hover {
 
 .layer-ms{
     width: 511px;
+}
+
+.layer-agenda{
+    width: 400px;
 }
 #presentation-content {
     display: flex;
@@ -202,6 +236,11 @@ a:hover {
     background-color: rgba(0, 255, 13, 0.0);
     width: 441px;
     display: block;
+}
+
+.agenda-content{
+    padding-top: 25px;
+    padding-left: 30px;
 }
 
 .no-overflow {

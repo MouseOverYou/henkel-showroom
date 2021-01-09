@@ -93,7 +93,7 @@
                 </div>
                 <div id="non-stations-group" style="position: fixed;
                 bottom: 0;">
-                    <div class="menu-group" style="display: flex">
+                    <div id="agenda-btn" class="menu-group" style="display: flex" onclick="agendaClick()">
                         <div>
                             <img src="assets/ui/Agenda-Icon.png" class="menupoint-icon"></img>
                         </div>
@@ -202,15 +202,15 @@
                     <p class="content-title">BATTERY PACK</p>
                 </div>
                 <div id="software-video-content" class="video-content">
-                    <iframe width="580" height="330" src="https://www.youtube.com/embed/G-AYEt6bmlM" 
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+                    <iframe width="580" height="330" src="https://www.youtube.com/embed/G-AYEt6bmlM" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
             </div>
         </div>
 
         <!--MARKET SEGMENTS (DYNAMIC)-->
-        <div id= "overlay-ms" class="overlay-blocker close">
+        <div id="overlay-ms" class="overlay-blocker close">
             <div class="emob-content layer-ms">
                 <div class="title-row">
                     <div>
@@ -220,11 +220,16 @@
                 </div>
                 <div class="content-row-ms">
                     <div class="ms-content-text">
-                        <p class="items-text">Growth in Automotive Electronics is being fueled by the trend to make cars more efficient, 
-                            sustainable, comfortable, intelligent and reliable. Next-generation electronics are key to new Advanced Driver Assistance Systems (ADAS), 
-                            such as cameras and radars, and existing safety and infotainment systems are becoming more elaborate and complex. 
-                            Henkel provides materials for efficient assembly, protection and thermal management of electronic control units, displays, sensors, 
-                            actuators and wire harnesses – to make sure they perform reliably over a maximized lifetime.</p>
+                        <p class="items-text">Growth in Automotive Electronics is being fueled by the trend to make cars
+                            more efficient,
+                            sustainable, comfortable, intelligent and reliable. Next-generation electronics are key to
+                            new Advanced Driver Assistance Systems (ADAS),
+                            such as cameras and radars, and existing safety and infotainment systems are becoming more
+                            elaborate and complex.
+                            Henkel provides materials for efficient assembly, protection and thermal management of
+                            electronic control units, displays, sensors,
+                            actuators and wire harnesses – to make sure they perform reliably over a maximized lifetime.
+                        </p>
                     </div>
                     <div class="">
                         <img style="max-width: 100px; float:right" src="./assets/ui/auto icon.png">
@@ -233,10 +238,43 @@
             </div>
         </div>
 
-        <!--How To Overlay-->
+        <!--STAGE-->
         <div id="howto-overlay" class="overlay-content close">
             <div id="presentation-content">
                 <img id="quiz-screen" src="assets/ui/Quiz_00.png">
+            </div>
+        </div>
+
+        <!--AGENDA-->
+        <div id="agenda" class="overlay-blocker close">
+            <div class="emob-content layer-agenda">
+                <div class="title-row">
+                    <div>
+                        <img class="content-nav-icon icon-close" style="left:94%" src="./assets/ui/Close.png">
+                    </div>
+                    <p class="content-title">AGENDA</p>
+                </div>
+                <div class="agenda-content">
+                    <div class="agenda-row">
+                        <p class="agenda-date">09.00 - 17.00</p>
+                        <p class="agenda-text">Stations open</p>
+                    </div>
+                    <div class="agenda-line"></div>
+                    <div class="agenda-row">
+                        <p class="agenda-date">10.00 - 11.00</p>
+                        <p class="agenda-text">Henkel's Solutions for Thermal Propagation <br>Prevention presentation by XXX</p>
+                    </div>
+                    <div class="agenda-line"></div>
+                    <div class="agenda-row">
+                        <p class="agenda-date">11.00 - 15.00</p>
+                        <p class="agenda-text">Chat with a Henkel Expert</p>
+                    </div>
+                    <div class="agenda-line"></div>
+                    <div class="agenda-row" style="padding-bottom: 25px">
+                        <p class="agenda-date">15.00 - 16.00</p>
+                        <p class="agenda-text">Battery Assembly Adhesives for Battery <br>module presentation by XXX</p>
+                    </div>
+                </div>
             </div>
         </div>
 
