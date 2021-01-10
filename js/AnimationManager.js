@@ -78,11 +78,11 @@ let AnimSlower = 0.25
 function AnimateEveryFrame() {
     AnimRate++
     //console.log(AnimRate)
-    if (MiddleProduct != undefined) {
-        MiddleProduct.rotation.x = AnimRate * AnimSlower * (Math.PI / 180)
+    if (DiscoverMeshes[0] != undefined) {
         DiscoverMeshes[0].rotation.y = AnimRate * 0.5 * (Math.PI / 180)
         DiscoverMeshes[1].rotation.y = AnimRate * 0.5 * (Math.PI / 180)
         DiscoverMeshes[2].rotation.y = AnimRate * 0.5 * (Math.PI / 180)
+        DiscoverMeshes[3].rotation.y = AnimRate * 0.5 * (Math.PI / 180)
     }
     //CheckLookingAtNew()
 }
