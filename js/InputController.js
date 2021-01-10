@@ -83,6 +83,7 @@ document.addEventListener("pointerdown", event => {
             }
             return
         }
+
         console.log(event.target.id)
         StationNameCliked(event)
         toFirstQuestion()
@@ -216,12 +217,6 @@ function closeOverlay_sideEffects(index) {
         travelCamToStation(index)
 }
 
-let radar_pdf = ["downloadables/c_radar_datenblatt.pdf", "downloadables/x_radar_datenblatt.pdf", "downloadables/s_radar_datenblatt.pdf"]
-function openRadarPdf() {
-    let index = BandToIndex(band)
-    window.open(radar_pdf[index], "_blank")
-}
-
 let menuStationsDict = { 0: "computer", 1: "mediation", 2: "toys", 3: "home_repair_service", 4: "contact_page", 5: "school", 6: "toys" }
 //HANDLE STATION NAMES VISIBILITY
 function restartUI(index) {
@@ -290,11 +285,15 @@ function ShowDigilounge(show) {
     if (show) {
         window.setTimeout(() => {
             document.getElementById("howto-overlay").classList.remove("close")
+            document.getElementById("chat").classList.remove("close")
+            document.getElementById("chat-x").classList.add("close")
         }, 1500)
 
     }
     else {
         document.getElementById("howto-overlay").classList.add("close")
+        document.getElementById("chat").classList.add("close")
+        document.getElementById("chat-x").classList.remove("close")
     }
 }
 

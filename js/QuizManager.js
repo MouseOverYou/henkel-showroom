@@ -7,7 +7,7 @@ function toNextQuestion(){
     }
     let slidePath = "assets/ui/Quiz_0"+ parseInt(slideNum) + ".png"
     document.getElementById("quiz-screen").src = slidePath
-    
+
 }
 
 function toFirstQuestion(){
