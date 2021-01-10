@@ -64,6 +64,7 @@ document.addEventListener("pointerdown", event => {
             return;
         }
         if(event.target.classList.contains("hasCam")){
+            closeOverlayBlockers();
             MenuUIListener(event)
             toFirstQuestion()
 
@@ -186,30 +187,12 @@ function setRadarSelection_sideEffects() {
     closeOverlays(1, false)
 }
 
-function closeOverlays(index, sideEffects) {
-    if (sideEffects) {
-        closeOverlay_sideEffects(index)
-    }
-
-    document.getElementsByClassName("overlay-content")[index].classList.add("close")
-
-    if (scene.activeCamera == walkerCam) {
-        document.getElementsByClassName("station-content")[index].classList.add("close")
-    }
-    //index 3 and 5doesnt have video
-    if (index != 3 && index != 5)
-        document.getElementsByClassName("video-content")[index].classList.add("close")
-
-    if (index == 2) {
-        document.getElementById("windshear-0").classList.add("close")
-        document.getElementById("windshear-1").classList.add("close")
-    }
-
-    if (index == 3) {
-        for (let i = 1; i <= 7; i++) {
-            document.getElementById("solution-content-" + i).classList.add("close")
-        }
-    }
+function closeOverlayBlockers(){
+    let overlays = document.getElementsByClassName("overlay-blocker");
+    for(let ov of overlays){
+        ov.classList.add("close")
+    };
+    document.getElementById("software-video-content").children[0].src = ""
 }
 
 function closeOverlay_sideEffects(index) {
@@ -220,7 +203,7 @@ function closeOverlay_sideEffects(index) {
 let menuStationsDict = { 0: "computer", 1: "mediation", 2: "toys", 3: "home_repair_service", 4: "contact_page", 5: "school", 6: "toys" }
 //HANDLE STATION NAMES VISIBILITY
 function restartUI(index) {
-
+    
     //HANDLE STATION NAMES VISIBILITY
     if (index == 4) {
         //show stationames
@@ -243,6 +226,8 @@ function restartUI(index) {
         document.getElementById("sn-1").classList.add("hidden-box")
         document.getElementById("sn-0").classList.add("hidden-box")
         document.getElementById("sn-5").classList.remove("hidden-box")
+
+        
 
         disableAllColliders();
     }
@@ -322,6 +307,9 @@ function MenuUIListener(ev) {
         }
         if(stationIndex != 3 && getComputedStyle(document.getElementById("overlay-ms"), null).display !="none" ){
             document.getElementById("overlay-ms").classList.add("close")
+        }
+        if(stationIndex == 4){
+            closeOverlayBlockers();
         }
         if (stationIndex == 2) {
             ShowDigilounge(true)
